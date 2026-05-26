@@ -183,6 +183,17 @@ p, li { color: var(--text-primary); }
 .text-light,
 .text-secondary { color: var(--text-primary) !important; }
 
+/* .feature — caixinha gradient com ícone branco. Sempre #fff em qualquer tema. */
+.feature,
+.feature i,
+.feature.text-white {
+	color: #fff !important;
+}
+.feature {
+	background: var(--gradient-brand) !important;
+	background-image: var(--gradient-brand) !important;
+}
+
 /* Max line length for body copy */
 main p { max-width: 65ch; }
 main .text-center p { margin-left: auto; margin-right: auto; }
@@ -337,6 +348,7 @@ main .text-center p { margin-left: auto; margin-right: auto; }
 
 /* ---- HERO ---- */
 .hero { padding-block: clamp(48px, 10vw, 120px); }
+
 .hero-eyebrow {
 	font-family: var(--font-body);
 	font-weight: 600;
@@ -346,6 +358,39 @@ main .text-center p { margin-left: auto; margin-right: auto; }
 	color: var(--text-secondary);
 	margin: 0 0 var(--space-lg);
 }
+
+/* Hero badge — card com gradient + border, itens alinhados via flex */
+.hero-badge {
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 4px 14px;
+	background: var(--gradient-brand);
+	background-image: var(--gradient-brand);
+	color: #fff !important;
+	font-family: var(--font-body);
+	font-weight: 600;
+	font-size: var(--fs-label);
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	padding: 10px 20px;
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.28);
+	box-shadow: 0 4px 18px rgba(30, 48, 243, 0.22);
+	max-width: 100%;
+}
+.hero-badge span {
+	display: inline-flex;
+	align-items: center;
+	color: #fff !important;
+}
+.hero-badge span:not(:last-child)::after {
+	content: '·';
+	margin-left: 14px;
+	color: rgba(255, 255, 255, 0.55);
+	font-weight: 400;
+}
+
 .hero-sub {
 	font-family: var(--font-body);
 	font-size: 1.125rem;

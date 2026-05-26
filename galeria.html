@@ -10,11 +10,12 @@
 	<link rel="icon" type="image/x-icon" href="assets/img/logotipo.png" />
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..600,0..100&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js/dist/css/lightgallery.min.css" />
 	<link href="assets/css/styles.css" rel="stylesheet" />
 	<link href="assets/css/lightslider.css" rel="stylesheet" />
+	<link href="assets/css/mfdesign.css" rel="stylesheet" />
 </head>
 
 <body class="d-flex flex-column h-100 bg-dark">
@@ -56,92 +57,99 @@
 			<!-- Cabeçalho -->
 			<section class="mb-5">
 				<div class="text-start mb-5">
-					<h1 class="display-5 fw-bolder mb-2"><span class="text-gradient d-inline">Projetos</span></h1>
-					<p class="lead text-muted mb-0">Uma seleção dos trabalhos que mais me orgulho — clique em qualquer imagem para expandir.</p>
+					<p class="hero-eyebrow">Selected works</p>
+					<h1 class="mb-3">Projetos</h1>
+					<p class="hero-sub">Seleção do que tenho feito em mídia social, identidade visual e convites. Clique em qualquer peça pra expandir.</p>
 				</div>
 
-				<!-- Galeria expandida -->
+				<!-- Galeria expandida — Gallery Plates -->
 				<div class="galeria-projetos">
 					<div class="row row-cols-1 row-cols-md-2 g-4">
 
-						<div class="col">
-							<div class="card overflow-hidden shadow rounded-4 border-0 h-100 hover-default">
-								<a href="assets/img/projetos/projeto-1.jpg" class="lightgallery-item d-block">
-									<img src="assets/img/projetos/projeto-1.jpg" class="img-fluid w-100" alt="Projeto 1" />
+						<article class="col">
+							<div class="ds-plate h-100">
+								<a href="assets/img/projetos/projeto-1.jpg" class="ds-plate__img-wrap lightgallery-item">
+									<img src="assets/img/projetos/projeto-1.jpg" class="ds-plate__img" alt="Mídia social — peça de feed para campanha" />
 								</a>
-								<div class="card-body p-4">
-									<h3 class="fw-bolder mb-2"><span class="text-gradient">Projeto 1</span></h3>
-									<p class="text-muted mb-0">Mídia social — arte para publicação.</p>
+								<div class="ds-plate__meta">
+									<span class="ds-plate__cat">Mídia social</span>
+									<h2 class="ds-plate__title">Campanha de feed</h2>
+									<p class="ds-plate__ctx">Arte para publicação em Instagram, ritmo visual de série.</p>
 								</div>
 							</div>
-						</div>
+						</article>
 
-						<div class="col">
-							<div class="card overflow-hidden shadow rounded-4 border-0 h-100 hover-default">
-								<a href="assets/img/projetos/projeto-2.jpg" class="lightgallery-item d-block">
-									<img src="assets/img/projetos/projeto-2.jpg" class="img-fluid w-100" alt="Projeto 2" />
+						<article class="col">
+							<div class="ds-plate h-100">
+								<a href="assets/img/projetos/projeto-2.jpg" class="ds-plate__img-wrap lightgallery-item">
+									<img src="assets/img/projetos/projeto-2.jpg" class="ds-plate__img" alt="Identidade visual — logotipo aplicado" />
 								</a>
-								<div class="card-body p-4">
-									<h3 class="fw-bolder mb-2"><span class="text-gradient">Projeto 2</span></h3>
-									<p class="text-muted mb-0">Identidade visual — logotipo e aplicação.</p>
+								<div class="ds-plate__meta">
+									<span class="ds-plate__cat">Identidade visual</span>
+									<h2 class="ds-plate__title">Logotipo &amp; aplicação</h2>
+									<p class="ds-plate__ctx">Do briefing à apresentação em mockup, fechando o sistema visual.</p>
 								</div>
 							</div>
-						</div>
+						</article>
 
-						<div class="col">
-							<div class="card overflow-hidden shadow rounded-4 border-0 h-100 hover-default">
-								<a href="assets/img/projetos/projeto-3.jpg" class="lightgallery-item d-block">
-									<img src="assets/img/projetos/projeto-3.jpg" class="img-fluid w-100" alt="Projeto 3" />
+						<article class="col">
+							<div class="ds-plate h-100">
+								<a href="assets/img/projetos/projeto-3.jpg" class="ds-plate__img-wrap lightgallery-item">
+									<img src="assets/img/projetos/projeto-3.jpg" class="ds-plate__img" alt="Convite digital para evento" />
 								</a>
-								<div class="card-body p-4">
-									<h3 class="fw-bolder mb-2"><span class="text-gradient">Projeto 3</span></h3>
-									<p class="text-muted mb-0">Convite digital para evento especial.</p>
+								<div class="ds-plate__meta">
+									<span class="ds-plate__cat">Convite</span>
+									<h2 class="ds-plate__title">Convite digital</h2>
+									<p class="ds-plate__ctx">Arte para evento — paleta e tipografia pensadas pro tom do dia.</p>
 								</div>
 							</div>
-						</div>
+						</article>
 
-						<div class="col">
-							<div class="card overflow-hidden shadow rounded-4 border-0 h-100 hover-default">
-								<a href="assets/img/projetos/projeto-4.jpg" class="lightgallery-item d-block">
-									<img src="assets/img/projetos/projeto-4.jpg" class="img-fluid w-100" alt="Projeto 4" />
+						<article class="col">
+							<div class="ds-plate h-100">
+								<a href="assets/img/projetos/projeto-4.jpg" class="ds-plate__img-wrap lightgallery-item">
+									<img src="assets/img/projetos/projeto-4.jpg" class="ds-plate__img" alt="Arte digital sob demanda" />
 								</a>
-								<div class="card-body p-4">
-									<h3 class="fw-bolder mb-2"><span class="text-gradient">Projeto 4</span></h3>
-									<p class="text-muted mb-0">Arte digital sob demanda.</p>
+								<div class="ds-plate__meta">
+									<span class="ds-plate__cat">Arte digital</span>
+									<h2 class="ds-plate__title">Peça sob demanda</h2>
+									<p class="ds-plate__ctx">Trabalho pontual para cliente específico.</p>
 								</div>
 							</div>
-						</div>
+						</article>
 
-						<div class="col">
-							<div class="card overflow-hidden shadow rounded-4 border-0 h-100 hover-default">
-								<a href="assets/img/projetos/projeto-5.jpg" class="lightgallery-item d-block">
-									<img src="assets/img/projetos/projeto-5.jpg" class="img-fluid w-100" alt="Projeto 5" />
+						<article class="col">
+							<div class="ds-plate h-100">
+								<a href="assets/img/projetos/projeto-5.jpg" class="ds-plate__img-wrap lightgallery-item">
+									<img src="assets/img/projetos/projeto-5.jpg" class="ds-plate__img" alt="Folder/flyer impresso" />
 								</a>
-								<div class="card-body p-4">
-									<h3 class="fw-bolder mb-2"><span class="text-gradient">Projeto 5</span></h3>
-									<p class="text-muted mb-0">Folder / flyer.</p>
+								<div class="ds-plate__meta">
+									<span class="ds-plate__cat">Impresso</span>
+									<h2 class="ds-plate__title">Folder &amp; flyer</h2>
+									<p class="ds-plate__ctx">Peça impressa com hierarquia de leitura clara.</p>
 								</div>
 							</div>
-						</div>
+						</article>
 
-						<div class="col">
-							<div class="card overflow-hidden shadow rounded-4 border-0 h-100 hover-default">
-								<a href="assets/img/projetos/projeto-6.png" class="lightgallery-item d-block">
-									<img src="assets/img/projetos/projeto-6.png" class="img-fluid w-100" alt="Projeto 6" />
+						<article class="col">
+							<div class="ds-plate h-100">
+								<a href="assets/img/projetos/projeto-6.png" class="ds-plate__img-wrap lightgallery-item">
+									<img src="assets/img/projetos/projeto-6.png" class="ds-plate__img" alt="Identidade de marca aplicada" />
 								</a>
-								<div class="card-body p-4">
-									<h3 class="fw-bolder mb-2"><span class="text-gradient">Projeto 6</span></h3>
-									<p class="text-muted mb-0">Identidade de marca aplicada.</p>
+								<div class="ds-plate__meta">
+									<span class="ds-plate__cat">Marca</span>
+									<h2 class="ds-plate__title">Identidade aplicada</h2>
+									<p class="ds-plate__ctx">Aplicação da identidade visual em diferentes superfícies.</p>
 								</div>
 							</div>
-						</div>
+						</article>
 
 					</div>
 				</div>
 
-				<div class="row mt-4">
+				<div class="row mt-5">
 					<div class="col-12 d-flex justify-content-center justify-content-md-end">
-						<a href="https://www.behance.net/" target="_blank" rel="noopener" class="btn d-flex gap-2 btn-primary text-white border-0 px-4 py-2">
+						<a href="https://www.behance.net/" target="_blank" rel="noopener" class="btn btn-light d-inline-flex align-items-center gap-2">
 							Mais projetos no Behance <i class="bi bi-box-arrow-up-right"></i>
 						</a>
 					</div>

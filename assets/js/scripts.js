@@ -1,51 +1,51 @@
-// === Tema (persistido em localStorage) ===
-function applyTheme(theme) {
-    var opposite = theme === 'dark' ? 'light' : 'dark';
+// === Tema (data-theme + localStorage, com fallback prefers-color-scheme) ===
+function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
 
-    document.body.classList.remove('bg-' + opposite);
-    document.body.classList.add('bg-' + theme);
-
-    document.querySelectorAll('.bg-' + opposite).forEach(function (el) {
-        el.classList.remove('bg-' + opposite);
-        el.classList.add('bg-' + theme);
+    // Ícones do toggle
+    document.querySelectorAll('.tema-dark-icon').forEach(function (el) {
+        el.classList.toggle('d-block', theme === 'dark');
+        el.classList.toggle('d-none', theme !== 'dark');
+    });
+    document.querySelectorAll('.tema-light-icon').forEach(function (el) {
+        el.classList.toggle('d-block', theme === 'light');
+        el.classList.toggle('d-none', theme !== 'light');
     });
 
-    if (theme === 'light') {
-        document.querySelectorAll('.nav-link').forEach(function (el) { el.classList.remove('text-light'); });
-        document.querySelectorAll('.tema-dark-icon').forEach(function (el) {
-            el.classList.remove('d-block'); el.classList.add('d-none');
-        });
-        document.querySelectorAll('.tema-light-icon').forEach(function (el) {
-            el.classList.remove('d-none'); el.classList.add('d-block');
-        });
-    } else {
-        document.querySelectorAll('.nav-link').forEach(function (el) { el.classList.add('text-light'); });
-        document.querySelectorAll('.tema-light-icon').forEach(function (el) {
-            el.classList.remove('d-block'); el.classList.add('d-none');
-        });
-        document.querySelectorAll('.tema-dark-icon').forEach(function (el) {
-            el.classList.remove('d-none'); el.classList.add('d-block');
-        });
-    }
+    // Estado a11y do switch
+    document.querySelectorAll('.alterar-tema').forEach(function (el) {
+        el.setAttribute('aria-checked', theme === 'light' ? 'true' : 'false');
+        el.checked = theme === 'light';
+    });
 
     try { localStorage.setItem('theme', theme); } catch (e) {}
 }
 
-// Aplica tema salvo no carregamento (HTML padrão é dark; só atua se estiver salvo light)
-(function () {
-    var saved = null;
-    try { saved = localStorage.getItem('theme'); } catch (e) {}
-    if (saved && saved !== 'dark') {
-        document.addEventListener('DOMContentLoaded', function () { applyTheme(saved); });
+function getInitialTheme() {
+    try {
+        var saved = localStorage.getItem('theme');
+        if (saved === 'dark' || saved === 'light') return saved;
+    } catch (e) {}
+    // Sem preferência salva: dark default (PRODUCT.md), mas respeita system se for light explícito
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        return 'light';
     }
-})();
+    return 'dark';
+}
 
-// Toggle ao clicar no switch
+// Aplica imediatamente (antes do DOMContentLoaded pra evitar flash)
+setTheme(getInitialTheme());
+
 document.addEventListener('DOMContentLoaded', function () {
+    // Reaplica pra atualizar os ícones depois que o DOM existe
+    setTheme(document.documentElement.getAttribute('data-theme') || 'dark');
+
     document.querySelectorAll('.alterar-tema').forEach(function (el) {
+        el.setAttribute('role', 'switch');
+        el.setAttribute('aria-label', 'Alternar entre tema claro e escuro');
         el.addEventListener('click', function () {
-            var current = document.body.classList.contains('bg-light') ? 'light' : 'dark';
-            applyTheme(current === 'light' ? 'dark' : 'light');
+            var current = document.documentElement.getAttribute('data-theme') || 'dark';
+            setTheme(current === 'dark' ? 'light' : 'dark');
         });
     });
 });
@@ -59,53 +59,46 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // === LightGallery (galeria de projetos) ===
 document.addEventListener('DOMContentLoaded', function () {
-    var galeriaProjetos = document.querySelector('.galeria-projetos');
-    if (galeriaProjetos && typeof lightGallery !== 'undefined') {
-        lightGallery(galeriaProjetos, { selector: '.lightgallery-item' });
-    }
+    var galerias = document.querySelectorAll('.galeria-projetos');
+    if (typeof lightGallery === 'undefined') return;
+    galerias.forEach(function (g) {
+        lightGallery(g, { selector: '.lightgallery-item' });
+    });
 });
 
-// === LightSlider (depoimentos) — depende de jQuery ===
+// === LightSlider (depoimentos) — respeita prefers-reduced-motion ===
 if (typeof jQuery !== 'undefined') {
     jQuery(function ($) {
         if (!$('#lightSlider').length) return;
+        var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         $('#lightSlider').lightSlider({
             item: 3,
             autoWidth: true,
             slideMove: 1,
-            slideMargin: 10,
+            slideMargin: 16,
             mode: 'slide',
             useCSS: true,
             cssEasing: 'ease',
             easing: 'linear',
-            speed: 800,
-            auto: true,
-            loop: true,
+            speed: 600,
+            auto: !reduceMotion,
+            loop: !reduceMotion,
             slideEndAnimation: true,
-            pause: 4000,
-            keyPress: false,
+            pause: 5000,
+            keyPress: true,
             controls: true,
             prevHtml: '',
             nextHtml: '',
-            rtl: false,
             adaptiveHeight: false,
-            vertical: false,
-            verticalHeight: 600,
-            vThumbWidth: 300,
-            thumbItem: 10,
             pager: true,
-            gallery: false,
-            galleryMargin: 5,
-            thumbMargin: 5,
-            currentPagerPosition: 'middle',
             enableTouch: true,
             enableDrag: true,
             freeMove: true,
             swipeThreshold: 40,
             responsive: [
-                { breakpoint: 1399, settings: { item: 2, slideMove: 1, slideMargin: 10 } },
-                { breakpoint: 991, settings: { item: 2, slideMove: 1, slideMargin: 10 } },
-                { breakpoint: 700, settings: { item: 1, slideMove: 1, verticalHeight: 400, vThumbWidth: 300, slideMargin: 0 } }
+                { breakpoint: 1399, settings: { item: 2, slideMove: 1, slideMargin: 16 } },
+                { breakpoint: 991, settings: { item: 2, slideMove: 1, slideMargin: 16 } },
+                { breakpoint: 700, settings: { item: 1, slideMove: 1, slideMargin: 8 } }
             ]
         });
     });
@@ -130,14 +123,14 @@ if (typeof jQuery !== 'undefined') {
 // === Submit do form via Web3Forms (AJAX) ===
 function renderFlash(container, ok, customMsg) {
     var msg = customMsg || (ok
-        ? '<strong>Contato enviado com sucesso</strong><br>Em breve retornarei seu contato'
-        : '<strong>Não foi possível enviar o contato.</strong><br>Verifique os campos e tente novamente');
+        ? '<strong>Contato enviado com sucesso.</strong><br>Em breve retorno o seu contato.'
+        : '<strong>Não foi possível enviar o contato.</strong><br>Verifique os campos e tente novamente.');
     container.innerHTML =
         '<div class="flash-message d-flex justify-content-center">' +
         '<div class="w-100 text-center alert-dismissible fade show alert flash alert-' +
         (ok ? 'success' : 'warning') + '">' +
         '<h5>' + msg + '</h5>' +
-        '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+        '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>' +
         '</div></div>';
 }
 
@@ -152,13 +145,11 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        // Validação básica (HTML já cobre required/email/minlength, mas reforçamos)
         if (!form.checkValidity()) {
             form.reportValidity();
             return;
         }
 
-        // Checagem da access_key — só valida se o campo existir e estiver preenchido
         var keyInput = form.querySelector('input[name="access_key"]');
         if (!keyInput || !keyInput.value) {
             if (container) {

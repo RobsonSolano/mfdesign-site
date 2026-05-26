@@ -172,7 +172,7 @@ h6, .h6 {
 	font-weight: 600;
 	font-size: var(--fs-label);
 	letter-spacing: 0.08em;
-	text-transform: uppercase;
+	text-transform: none;
 	color: var(--text-secondary) !important;
 }
 

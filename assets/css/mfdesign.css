@@ -424,7 +424,7 @@ main .text-center p { margin-left: auto; margin-right: auto; }
 	left: 50%;
 	transform: translateX(-50%);
 	width: calc(100% - 36px);
-	height: calc(100% - 54px);
+	height: 90%;
 	max-height: none;
 	max-width: none;
 	object-fit: cover;

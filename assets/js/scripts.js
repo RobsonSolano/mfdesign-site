@@ -158,9 +158,9 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Checagem da access_key — placeholder ainda não substituído
+        // Checagem da access_key — só valida se o campo existir e estiver preenchido
         var keyInput = form.querySelector('input[name="access_key"]');
-        if (!keyInput || !keyInput.value || keyInput.value === 'YOUR_WEB3FORMS_ACCESS_KEY') {
+        if (!keyInput || !keyInput.value) {
             if (container) {
                 renderFlash(container, false,
                     '<strong>Formulário não configurado.</strong><br>Configure a access_key do Web3Forms antes de receber contatos.');

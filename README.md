@@ -48,9 +48,9 @@ O formulário em `/galeria#contato` envia via [Web3Forms](https://web3forms.com/
 1. Acesse https://web3forms.com/ e gere uma `access_key` (basta informar o email `mdesigner044@gmail.com`).
 2. Em `galeria.html`, localize o input hidden:
    ```html
-   <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+   <input type="hidden" name="access_key" value="8639006d-0584-4b1f-861c-20cbe8971743" />
    ```
-3. Substitua `YOUR_WEB3FORMS_ACCESS_KEY` pela chave recebida.
+3. Substitua `8639006d-0584-4b1f-861c-20cbe8971743` pela chave recebida.
 4. (Opcional) Em web3forms.com configure o domínio `mfdesign.vercel.app` no allowlist — a access_key é exposta no HTML por design; a proteção contra abuso é feita por domínio no painel do Web3Forms.
 
 Enquanto a access_key não for configurada, o submit exibe uma mensagem de erro avisando que o formulário não está configurado.

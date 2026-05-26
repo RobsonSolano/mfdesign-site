@@ -5,18 +5,26 @@
 
 /* ---- TOKENS ---- */
 :root {
-	/* Color primitives */
-	--color-gold: #c9a35a;
-	--color-gold-deep: #a6803e;
-	--color-gold-soft: #e5c98b;
-	--color-ink: #181612;
-	--color-ink-elevated: #221f1a;
-	--color-ink-line: #2e2a24;
-	--color-parchment: #f7f4ee;
-	--color-parchment-elevated: #fffefb;
-	--color-parchment-line: #e6e1d7;
-	--color-ash: #777268;
-	--color-ash-soft: #b5afa3;
+	/* Brand gradient (rosa-roxo) */
+	--gradient-brand: linear-gradient(135deg, #1e30f3 0%, #e21e80 100%);
+	--gradient-brand-soft: linear-gradient(135deg, rgba(30, 48, 243, 0.12) 0%, rgba(226, 30, 128, 0.12) 100%);
+	--color-brand-blue: #1e30f3;
+	--color-brand-pink: #e21e80;
+	--color-brand-deep: #a01d8f;
+
+	/* Dark — puxado pro preto puro, sem tinte warm */
+	--color-ink: #0e0e11;
+	--color-ink-elevated: #16171a;
+	--color-ink-line: #24252a;
+
+	/* Light — neutro frio */
+	--color-parchment: #ffffff;
+	--color-parchment-elevated: #f7f7f8;
+	--color-parchment-line: #e5e5e8;
+
+	/* Neutros de texto */
+	--color-ash: #6b6b72;
+	--color-ash-soft: #a0a0a8;
 
 	/* Semantic — dark default */
 	--bg-base: var(--color-ink);
@@ -25,9 +33,9 @@
 	--text-primary: var(--color-parchment);
 	--text-secondary: var(--color-ash-soft);
 	--text-muted: var(--color-ash);
-	--accent: var(--color-gold);
-	--accent-hover: var(--color-gold-deep);
-	--accent-soft: var(--color-gold-soft);
+	--accent: var(--color-brand-pink);
+	--accent-hover: var(--color-brand-deep);
+	--accent-soft: var(--gradient-brand-soft);
 
 	/* Type */
 	--font-display: "Fraunces", "Cormorant Garamond", Georgia, serif;
@@ -89,19 +97,19 @@ body {
 	transition: background-color var(--dur-base) var(--ease-standard), color var(--dur-base) var(--ease-standard);
 }
 
-/* Kill Bootstrap brand gradient classes */
-.bg-gradient-primary-to-secondary,
-.bg-gradient-primary-to-secondary.cta {
-	background: var(--bg-elevated) !important;
-	background-image: none !important;
-	color: var(--text-primary) !important;
+/* Brand gradient — reativado como acento principal */
+.bg-gradient-primary-to-secondary {
+	background: var(--gradient-brand) !important;
+	background-image: var(--gradient-brand) !important;
+	color: #fff !important;
 }
 
 .text-gradient {
-	background: none !important;
-	-webkit-background-clip: unset !important;
-	-webkit-text-fill-color: currentColor !important;
-	color: var(--accent) !important;
+	background: var(--gradient-brand) !important;
+	-webkit-background-clip: text !important;
+	background-clip: text !important;
+	-webkit-text-fill-color: transparent !important;
+	color: transparent !important;
 }
 
 /* Bootstrap bg helpers → tokens */
@@ -187,11 +195,13 @@ main .text-center p { margin-left: auto; margin-right: auto; }
 
 .navbar-brand { padding: 0; }
 
+/* Specificity bump (.navbar .nav-link) pra vencer .text-light do Bootstrap */
+.navbar .nav-link,
 .nav-link {
 	font-family: var(--font-body) !important;
 	font-weight: 600 !important;
-	font-size: var(--fs-label) !important;
-	letter-spacing: 0.08em !important;
+	font-size: 1rem !important;
+	letter-spacing: 0.06em !important;
 	text-transform: uppercase;
 	color: var(--text-primary) !important;
 	padding: var(--space-sm) 0 !important;
@@ -199,7 +209,9 @@ main .text-center p { margin-left: auto; margin-right: auto; }
 	border-bottom: 2px solid transparent;
 	transition: color var(--dur-fast) var(--ease-standard), border-color var(--dur-fast) var(--ease-standard);
 }
+.navbar .nav-link:hover,
 .nav-link:hover { color: var(--accent) !important; }
+.navbar .nav-link.active,
 .nav-link.active {
 	color: var(--accent) !important;
 	border-bottom-color: var(--accent);
@@ -241,12 +253,14 @@ main .text-center p { margin-left: auto; margin-right: auto; }
 }
 
 .btn-primary {
-	background: var(--accent) !important;
-	color: var(--color-ink) !important;
+	background: var(--gradient-brand) !important;
+	background-image: var(--gradient-brand) !important;
+	color: #fff !important;
+	border: none !important;
 }
 .btn-primary:hover {
-	background: var(--accent-hover) !important;
-	color: var(--color-ink) !important;
+	filter: brightness(1.1);
+	color: #fff !important;
 }
 
 .btn-outline-primary,
@@ -352,7 +366,6 @@ main .text-center p { margin-left: auto; margin-right: auto; }
 	width: 100%;
 	height: auto;
 	display: block;
-	border: 1px solid var(--border-subtle);
 }
 @media (min-width: 768px) {
 	.profile-img { max-width: 360px; }
@@ -397,7 +410,7 @@ header .badge.bg-gradient-primary-to-secondary {
 	transition: transform var(--dur-slow) var(--ease-out-quart);
 }
 .galeria-projetos .lightgallery-item:hover {
-	box-shadow: 0 2px 24px rgba(201, 163, 90, 0.08);
+	box-shadow: 0 4px 28px rgba(226, 30, 128, 0.18);
 }
 .galeria-projetos .lightgallery-item:hover img {
 	transform: scale(1.02);
@@ -414,7 +427,7 @@ header .badge.bg-gradient-primary-to-secondary {
 	flex-direction: column;
 	height: 100%;
 }
-.ds-plate:hover { box-shadow: 0 2px 24px rgba(201, 163, 90, 0.08); }
+.ds-plate:hover { box-shadow: 0 4px 28px rgba(226, 30, 128, 0.18); }
 .ds-plate__img-wrap {
 	display: block;
 	overflow: hidden;
@@ -460,18 +473,24 @@ header .badge.bg-gradient-primary-to-secondary {
 	margin: 0;
 }
 
-/* ---- CTA SECTION ---- */
+/* ---- CTA SECTION (gradient bg) ---- */
 .cta {
-	background: var(--bg-elevated) !important;
-	background-image: none !important;
-	color: var(--text-primary) !important;
-	border: 1px solid var(--border-subtle);
+	border: none !important;
 	border-radius: var(--radius-image) !important;
 	padding: var(--space-xxl) var(--space-lg) !important;
 }
-.cta h3 { color: var(--text-primary) !important; }
-.cta p { color: var(--text-muted) !important; }
-.cta .icon-tabler-heart-handshake { stroke: var(--accent); }
+.cta h3, .cta p { color: #fff !important; }
+.cta .icon-tabler-heart-handshake { stroke: #fff; }
+.cta .btn-light {
+	background: rgba(255, 255, 255, 0.95) !important;
+	color: var(--color-ink) !important;
+	border: none !important;
+}
+.cta .btn-light:hover {
+	background: #fff !important;
+	color: var(--color-brand-pink) !important;
+}
+.cta .btn-light .text-gradient { color: var(--color-brand-pink) !important; -webkit-text-fill-color: currentColor !important; background: none !important; }
 
 /* ---- DEPOIMENTOS ---- */
 .depoimento-item-responsive .depoimento-item img {
@@ -534,9 +553,9 @@ header .badge.bg-gradient-primary-to-secondary {
 
 .contato-title { color: var(--text-primary); }
 .contato-title .feature {
-	background: var(--accent) !important;
-	background-image: none !important;
-	color: var(--color-ink) !important;
+	background: var(--gradient-brand) !important;
+	background-image: var(--gradient-brand) !important;
+	color: #fff !important;
 	border-radius: var(--radius-md);
 	width: 2rem;
 	height: 2rem;
@@ -576,22 +595,23 @@ footer a { color: var(--text-primary); }
 	display: inline-flex;
 	width: 56px;
 	height: 56px;
-	background: var(--accent);
+	background: var(--gradient-brand);
+	background-image: var(--gradient-brand);
 	border-radius: var(--radius-pill);
 	align-items: center;
 	justify-content: center;
-	color: var(--color-ink);
-	box-shadow: 0 4px 16px rgba(24, 22, 18, 0.4);
-	transition: background var(--dur-fast) var(--ease-standard), transform var(--dur-base) var(--ease-out-quart);
+	color: #fff;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+	transition: filter var(--dur-fast) var(--ease-standard), transform var(--dur-base) var(--ease-out-quart);
 }
 #whatsapp-flutuante a:hover {
-	background: var(--accent-hover);
+	filter: brightness(1.1);
 	transform: translateY(-2px);
 }
 #whatsapp-flutuante a svg {
 	width: 24px;
 	height: 24px;
-	fill: var(--color-ink) !important;
+	fill: #fff !important;
 }
 
 /* ---- 404 PAGE ---- */
@@ -606,7 +626,11 @@ footer a { color: var(--text-primary); }
 	font-weight: 400;
 	font-size: clamp(6rem, 18vw, 12rem);
 	line-height: 0.9;
-	color: var(--accent);
+	background: var(--gradient-brand);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	color: transparent;
 	margin: 0 0 var(--space-md);
 	letter-spacing: -0.04em;
 }
@@ -619,11 +643,13 @@ footer a { color: var(--text-primary); }
 }
 .descricao { color: var(--text-muted); }
 .page-not-found-btn-voltar {
-	background: var(--accent) !important;
-	color: var(--color-ink) !important;
+	background: var(--gradient-brand) !important;
+	background-image: var(--gradient-brand) !important;
+	color: #fff !important;
 	border-radius: var(--radius-md) !important;
+	border: none !important;
 }
-.page-not-found-btn-voltar:hover { background: var(--accent-hover) !important; }
+.page-not-found-btn-voltar:hover { filter: brightness(1.1); color: #fff !important; }
 
 /* ---- SECTIONS ---- */
 section[id], div[id] { scroll-margin-top: 100px; }

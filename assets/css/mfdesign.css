@@ -413,8 +413,9 @@ main .text-center p { margin-left: auto; margin-right: auto; }
 	overflow: visible;
 	box-shadow: 0 12px 40px rgba(30, 48, 243, 0.25);
 }
+
 @media (min-width: 768px) {
-	.profile { max-width: 460px; }
+	.profile { max-width: 460px !important;}
 }
 
 .profile-img {

@@ -356,27 +356,68 @@ main .text-center p { margin-left: auto; margin-right: auto; }
 }
 
 .profile {
-	background: transparent !important;
-	border-radius: 0 !important;
+	background: var(--gradient-brand) !important;
+	background-image: var(--gradient-brand) !important;
+	border-radius: 24px !important;
 	position: relative;
-	display: inline-block;
-}
-.profile-img {
-	border-radius: var(--radius-image) !important;
+	width: 100%;
 	max-width: 320px;
+	max-height: none;
+	aspect-ratio: 4 / 5;
+	padding: 36px 18px 18px;
+	overflow: visible;
+	box-shadow: 0 12px 40px rgba(30, 48, 243, 0.25);
+}
+@media (min-width: 768px) {
+	.profile { max-width: 340px; }
+}
+
+.profile-img {
+	position: absolute;
+	bottom: 18px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: calc(100% - 36px);
+	height: calc(100% - 54px);
+	max-height: none;
+	max-width: none;
+	object-fit: cover;
+	object-position: center top;
+	border-radius: 16px !important;
+	display: block;
+}
+
+/* SVG dots decorativos — re-ativados e dimensionados pro novo layout */
+.profile .dots-1,
+.profile .dots-2,
+.profile .dots-3,
+.profile .dots-4 {
+	display: block !important;
+	position: absolute;
+	width: 24px;
+	height: auto;
+	pointer-events: none;
+}
+.profile .dots-1 svg,
+.profile .dots-2 svg,
+.profile .dots-3 svg,
+.profile .dots-4 svg {
 	width: 100%;
 	height: auto;
 	display: block;
 }
-@media (min-width: 768px) {
-	.profile-img { max-width: 360px; }
-}
 
-/* Esconde os SVG dots decorativos */
-.profile .dots-1,
-.profile .dots-2,
-.profile .dots-3,
-.profile .dots-4 { display: none !important; }
+.profile .dots-1 { top: 14px; right: 18px; }
+.profile .dots-1 svg { fill: #fff; }
+
+.profile .dots-2 { top: 32px; right: -14px; }
+.profile .dots-2 svg { fill: var(--color-brand-blue); }
+
+.profile .dots-3 { bottom: 32px; left: 18px; }
+.profile .dots-3 svg { fill: #fff; }
+
+.profile .dots-4 { bottom: 14px; left: -14px; }
+.profile .dots-4 svg { fill: var(--color-brand-blue); }
 
 /* Hero badge — simplifica */
 header .badge.bg-gradient-primary-to-secondary {

@@ -15,7 +15,10 @@ function setTheme(theme) {
     // Estado a11y do switch
     document.querySelectorAll('.alterar-tema').forEach(function (el) {
         el.setAttribute('aria-checked', theme === 'light' ? 'true' : 'false');
-        el.checked = theme === 'light';
+    });
+
+    document.querySelectorAll('meta[name="theme-color"]').forEach(function (el) {
+        el.setAttribute('content', theme === 'light' ? '#ffffff' : '#0e0e11');
     });
 
     try { localStorage.setItem('theme', theme); } catch (e) {}
@@ -42,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.querySelectorAll('.alterar-tema').forEach(function (el) {
         el.setAttribute('role', 'switch');
-        el.setAttribute('aria-label', 'Alternar entre tema claro e escuro');
         el.addEventListener('click', function () {
             var current = document.documentElement.getAttribute('data-theme') || 'dark';
             setTheme(current === 'dark' ? 'light' : 'dark');
@@ -50,59 +52,82 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// === Tooltips Bootstrap ===
+// === LightGallery (projetos) ===
 document.addEventListener('DOMContentLoaded', function () {
-    if (typeof bootstrap === 'undefined') return;
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    tooltipTriggerList.map(function (el) { return new bootstrap.Tooltip(el); });
-});
-
-// === LightGallery (galeria de projetos) ===
-document.addEventListener('DOMContentLoaded', function () {
-    var galerias = document.querySelectorAll('.galeria-projetos');
     if (typeof lightGallery === 'undefined') return;
-    galerias.forEach(function (g) {
-        lightGallery(g, { selector: '.lightgallery-item' });
-    });
-});
-
-// === LightSlider (depoimentos) — respeita prefers-reduced-motion ===
-if (typeof jQuery !== 'undefined') {
-    jQuery(function ($) {
-        if (!$('#lightSlider').length) return;
-        var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        $('#lightSlider').lightSlider({
-            item: 3,
-            autoWidth: true,
-            slideMove: 1,
-            slideMargin: 16,
-            mode: 'slide',
-            useCSS: true,
-            cssEasing: 'ease',
-            easing: 'linear',
-            speed: 600,
-            auto: !reduceMotion,
-            loop: !reduceMotion,
-            slideEndAnimation: true,
-            pause: 5000,
-            keyPress: true,
-            controls: true,
-            prevHtml: '',
-            nextHtml: '',
-            adaptiveHeight: false,
-            pager: true,
-            enableTouch: true,
-            enableDrag: true,
-            freeMove: true,
-            swipeThreshold: 40,
-            responsive: [
-                { breakpoint: 1399, settings: { item: 2, slideMove: 1, slideMargin: 16 } },
-                { breakpoint: 991, settings: { item: 2, slideMove: 1, slideMargin: 16 } },
-                { breakpoint: 700, settings: { item: 1, slideMove: 1, slideMargin: 8 } }
-            ]
+    document.querySelectorAll('.galeria-projetos').forEach(function (g) {
+        lightGallery(g, {
+            selector: '.lightgallery-item',
+            download: false,
+            counter: true,
+            hash: false,
+            thumbnail: false
         });
     });
-}
+});
+
+// === Mural de feedbacks: indicadores da faixa deslizante ===
+// A faixa existe só até 991px (ver mfdesign.css). Os indicadores mostram a
+// posição, levam até cada print e ligam o esmaecimento das bordas.
+document.addEventListener('DOMContentLoaded', function () {
+    var mural = document.querySelector('.mural');
+    var dots = document.querySelector('.mural-dots');
+    if (!mural || !dots) return;
+
+    var itens = [].slice.call(mural.querySelectorAll('.mural__item'));
+    if (itens.length < 2) return;
+
+    // Mantém o número da dica em sincronia com a quantidade real de prints
+    var total = document.querySelector('.mural-dica [data-total]');
+    if (total) total.textContent = itens.length;
+
+    var base = itens[0].offsetLeft;
+    itens.forEach(function (item, i) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('aria-label', 'Ver depoimento ' + (i + 1) + ' de ' + itens.length);
+        b.addEventListener('click', function () {
+            var reduz = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            mural.scrollTo({ left: item.offsetLeft - base, behavior: reduz ? 'auto' : 'smooth' });
+        });
+        dots.appendChild(b);
+    });
+
+    var botoes = [].slice.call(dots.children);
+    function marcar(i) {
+        botoes.forEach(function (b, j) {
+            if (j === i) b.setAttribute('aria-current', 'true');
+            else b.removeAttribute('aria-current');
+        });
+    }
+    marcar(0);
+
+    if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entradas) {
+            entradas.forEach(function (e) {
+                if (e.isIntersecting) marcar(itens.indexOf(e.target));
+            });
+        }, { root: mural, threshold: 0.6 });
+        itens.forEach(function (item) { io.observe(item); });
+    }
+
+    // A faixa sangra 20px além do container, então em repouso o scrollLeft é o
+    // próprio padding, não zero: o limite tem que considerar isso. Medido fora
+    // do handler pra não forçar cálculo de estilo a cada evento de scroll.
+    var folgaInicial = 0;
+    function medirFolga() {
+        folgaInicial = (parseFloat(getComputedStyle(mural).paddingLeft) || 0) + 4;
+    }
+    function bordas() {
+        var rolavel = mural.scrollWidth - mural.clientWidth > 4;
+        mural.classList.toggle('tem-mais-esquerda', rolavel && mural.scrollLeft > folgaInicial);
+        mural.classList.toggle('tem-mais-direita', rolavel && mural.scrollLeft + mural.clientWidth < mural.scrollWidth - 4);
+    }
+    medirFolga();
+    bordas();
+    mural.addEventListener('scroll', bordas, { passive: true });
+    window.addEventListener('resize', function () { medirFolga(); bordas(); });
+});
 
 // === Máscara de telefone (form de contato) ===
 (function () {
@@ -128,8 +153,8 @@ function renderFlash(container, ok, customMsg) {
     container.innerHTML =
         '<div class="flash-message d-flex justify-content-center">' +
         '<div class="w-100 text-center alert-dismissible fade show alert flash alert-' +
-        (ok ? 'success' : 'warning') + '">' +
-        '<h5>' + msg + '</h5>' +
+        (ok ? 'success' : 'warning') + '" role="status">' +
+        '<p class="mb-0">' + msg + '</p>' +
         '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>' +
         '</div></div>';
 }

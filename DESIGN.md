@@ -1,56 +1,64 @@
 ---
 name: MF Designer
-description: Portfólio de Mayara Ferreira — atelier de design, vitrine de um trabalho artesanal.
+description: Portfólio de Mayara Ferreira, designer gráfica. Vitrine de projetos com identidade própria em degradê.
+register: brand
 colors:
-  gold: "#C9A35A"
-  gold-deep: "#A6803E"
-  gold-soft: "#E5C98B"
-  ink: "#181612"
-  ink-elevated: "#221F1A"
-  ink-line: "#2E2A24"
-  parchment: "#F7F4EE"
-  parchment-elevated: "#FFFEFB"
-  parchment-line: "#E6E1D7"
-  ash: "#777268"
-  ash-soft: "#B5AFA3"
+  brand-blue: "#1e30f3"
+  brand-pink: "#e21e80"
+  brand-deep: "#a01d8f"
+  gradient-brand: "linear-gradient(135deg, #1e30f3 0%, #e21e80 100%)"
+  ink: "#0e0e11"
+  ink-elevated: "#16171a"
+  ink-line: "#26262d"
+  ink-line-strong: "#35353f"
+  parchment: "#ffffff"
+  parchment-elevated: "#f7f7f8"
+  parchment-line: "#e4e3e8"
+  text-secondary-dark: "#b4b1bd"
+  text-muted-dark: "#a09daa"
+  text-secondary-light: "#5b5862"
+  text-muted-light: "#66626e"
+  accent-text-dark: "#f2489b"
+  accent-text-light: "#c2186c"
 typography:
   display:
-    fontFamily: "Fraunces, 'Cormorant Garamond', Georgia, serif"
-    fontSize: "clamp(2.5rem, 7vw, 5rem)"
-    fontWeight: 400
+    fontFamily: "Montserrat, system-ui, sans-serif"
+    fontSize: "clamp(2.5rem, 6vw, 3.75rem)"
+    fontWeight: 800
     lineHeight: 1.05
-    letterSpacing: "-0.02em"
+    letterSpacing: "-0.03em"
   headline:
-    fontFamily: "Fraunces, 'Cormorant Garamond', Georgia, serif"
-    fontSize: "clamp(1.75rem, 4vw, 2.75rem)"
-    fontWeight: 500
+    fontFamily: "Montserrat, system-ui, sans-serif"
+    fontSize: "clamp(1.75rem, 3.5vw, 2.25rem)"
+    fontWeight: 700
     lineHeight: 1.15
-    letterSpacing: "-0.01em"
-  title:
-    fontFamily: "Inter, 'Plus Jakarta Sans', system-ui, sans-serif"
-    fontSize: "clamp(1.125rem, 1.5vw, 1.375rem)"
-    fontWeight: 600
-    lineHeight: 1.3
-    letterSpacing: "normal"
-  body:
-    fontFamily: "Inter, 'Plus Jakarta Sans', system-ui, sans-serif"
-    fontSize: "1rem"
-    fontWeight: 400
-    lineHeight: 1.6
-    letterSpacing: "normal"
-  label:
-    fontFamily: "Inter, 'Plus Jakarta Sans', system-ui, sans-serif"
-    fontSize: "0.75rem"
+    letterSpacing: "-0.02em"
+  role:
+    fontFamily: "Montserrat, system-ui, sans-serif"
+    fontSize: "clamp(1.25rem, 2.6vw, 1.625rem)"
     fontWeight: 600
     lineHeight: 1.2
-    letterSpacing: "0.08em"
+  title:
+    fontFamily: "Montserrat, system-ui, sans-serif"
+    fontSize: "1.125rem"
+    fontWeight: 600
+    lineHeight: 1.3
+  body:
+    fontFamily: "Montserrat, system-ui, sans-serif"
+    fontSize: "1rem"
+    fontWeight: 400
+    lineHeight: 1.65
+  label:
+    fontFamily: "Montserrat, system-ui, sans-serif"
+    fontSize: "0.8125rem"
+    fontWeight: 600
+    lineHeight: 1.2
+    letterSpacing: "0.1em"
 rounded:
-  none: "0"
-  sm: "2px"
-  md: "4px"
-  lg: "8px"
-  xl: "16px"
-  image: "12px"
+  rule: "3px"
+  control: "10px"
+  surface: "14px"
+  panel: "20px"
   pill: "999px"
 spacing:
   xs: "4px"
@@ -59,215 +67,195 @@ spacing:
   lg: "24px"
   xl: "40px"
   xxl: "64px"
-  section: "96px"
 components:
   button-primary:
-    backgroundColor: "{colors.gold}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.md}"
-    padding: "14px 28px"
+    background: "{colors.gradient-brand}"
+    textColor: "#ffffff"
+    rounded: "{rounded.control}"
+    padding: "15px 28px"
     typography: "{typography.label}"
-  button-primary-hover:
-    backgroundColor: "{colors.gold-deep}"
-    textColor: "{colors.ink}"
   button-ghost:
-    backgroundColor: "transparent"
-    textColor: "{colors.gold}"
-    rounded: "{rounded.md}"
-    padding: "14px 28px"
+    background: "transparent"
+    textColor: "{colors.parchment}"
+    border: "1px solid {colors.ink-line-strong}"
+    rounded: "{rounded.control}"
+    padding: "15px 28px"
     typography: "{typography.label}"
-  button-ghost-hover:
-    backgroundColor: "{colors.ink-elevated}"
-    textColor: "{colors.gold}"
-  card-image:
-    backgroundColor: "{colors.ink-elevated}"
-    rounded: "{rounded.image}"
-    padding: "0"
-  card-meta:
-    backgroundColor: "transparent"
-    textColor: "{colors.ash-soft}"
-    rounded: "{rounded.none}"
-    padding: "16px 0 0 0"
-    typography: "{typography.body}"
+  gallery-plate:
+    background: "{colors.ink-elevated}"
+    border: "1px solid {colors.ink-line}"
+    rounded: "{rounded.surface}"
+    imageAspect: "3 / 2"
+  definition-list:
+    background: "transparent"
+    separator: "1px solid {colors.ink-line}"
+    padding: "24px 0"
+  chip:
+    background: "{colors.ink-elevated}"
+    border: "1px solid {colors.ink-line}"
+    rounded: "{rounded.control}"
+    padding: "11px 18px"
+    typography: "{typography.label}"
   input-line:
-    backgroundColor: "transparent"
-    textColor: "{colors.parchment}"
-    rounded: "{rounded.none}"
-    padding: "12px 0"
-    typography: "{typography.body}"
-  nav-link:
-    backgroundColor: "transparent"
-    textColor: "{colors.parchment}"
-    rounded: "{rounded.none}"
-    padding: "8px 0"
-    typography: "{typography.label}"
+    background: "transparent"
+    borderBottom: "1px solid {colors.ink-line-strong}"
+    rounded: "{rounded.rule}"
+    padding: "24px 0 8px"
 ---
 
 # Design System: MF Designer
 
+Este documento descreve o sistema que está implementado em `assets/css/mfdesign.css`. Os tokens acima são o espelho do `:root` daquele arquivo; ao mudar um, mude os dois.
+
 ## 1. Overview
 
-**Creative North Star: "The Atelier Window"**
+**North star: o projeto é o herói, a interface é a moldura.**
 
-O site é a vitrine de um ateliê de design. A UI é a moldura — discreta, deliberada, sem competir com o trabalho exposto. O herói é sempre o portfólio; a interface cede espaço pra ele respirar. O visitante chega em modo de avaliação silenciosa, percorre as peças, e sai com a sensação de que viu o trabalho de uma designer confiante.
+O portfólio existe para responder três perguntas em segundos: quem é a profissional, o que ela sabe fazer, e ela consegue provar isso. Tudo que compete com as peças de design perde espaço.
 
-A linguagem é editorial-modernista. Tipografia serif variável (Fraunces) carrega autoridade calma nos títulos; sans neutro (Inter) suporta o corpo sem chamar atenção. Um único acento dourado-antigo aparece com parcimônia — em CTAs, links, e detalhes que merecem peso. Tudo o mais é neutro warm: near-black em dark, parchment em light. Nenhum gradiente, nenhum neon, nenhuma sombra decorativa.
+A identidade é o degradê azul→rosa sobre fundo escuro. Ele não foi abandonado: foi concentrado. Aparece em superfícies que emolduram ou convidam, nunca dentro do conteúdo:
 
-O sistema rejeita explicitamente: o template Bootstrap atual (gradiente roxo→rosa, cards uniformes, ar de "startup pessoal"); a estética SaaS dark com gradientes neon ("AI tool"); kitsch wedding (script + floral); portfólios tech-bro (monospace cinza-grafite).
+- moldura da foto do hero;
+- botão primário;
+- fio de 44px abaixo de cada título de seção;
+- painel de contato;
+- botão flutuante de WhatsApp.
 
-**Key Characteristics:**
-- Restrained palette: gold antigo + neutros warm. Zero gradientes.
-- Tipografia faz o trabalho pesado: contraste serif/sans, escala generosa, hierarquia óbvia.
-- Cards e superfícies flat. Sem shadow-glow decorativa.
-- Mobile como tela primária; desktop é amplificação, não palco.
-- Dark e light recebem o mesmo cuidado de execução.
+Fora desses pontos, a página é neutro escuro (ou neutro claro, no tema light) com tipografia carregando a hierarquia.
 
-## 2. Colors: A Paleta do Atelier
+**Características:**
 
-Paleta restrita por convicção: um acento metálico quente sobre neutros igualmente quentes. A rara presença do gold é o que dá peso à sua aparição.
+- Montserrat como família única; hierarquia por peso (800 no nome, 700 em títulos, 600 em rótulos, 400 no corpo) e por escala fluida.
+- Superfícies chapadas. Sombra só em hover de peça clicável e sob o botão primário.
+- Dark é o padrão; light recebe o mesmo cuidado e os dois passam WCAG AA.
+- Mobile é a tela principal: a maior parte do tráfego vem de Instagram e WhatsApp.
 
-### Primary
-- **Atelier Gold** (`#C9A35A` / `oklch(76% 0.115 82)`): único acento saturado. CTAs principais, ativos de navegação, fios de divisão sob títulos, ícones de status crítico. Usado com parcimônia.
-- **Atelier Gold Deep** (`#A6803E` / `oklch(62% 0.115 82)`): estado hover/pressed do gold. Também em texto sobre superfícies parchment quando o gold puro perderia contraste.
-- **Atelier Gold Soft** (`#E5C98B` / `oklch(85% 0.085 85)`): destaque em texto, citações, badges. Quando o gold puro seria demais.
+## 2. Cores
 
-### Neutral (Dark Theme)
-- **Ink** (`#181612` / `oklch(15% 0.005 80)`): background base do dark theme. Near-black tingido em direção ao quente.
-- **Ink Elevated** (`#221F1A` / `oklch(20% 0.005 80)`): superfícies elevadas (cards, nav, footer). 1 step acima do base.
-- **Ink Line** (`#2E2A24` / `oklch(25% 0.005 80)`): bordas, divisores. Quase invisível, intencional.
+Estratégia: **committed**. Um degradê de marca carrega a personalidade em pontos estratégicos, sobre uma base de neutros levemente puxados para o violeta (entre o azul e o rosa da marca).
 
-### Neutral (Light Theme)
-- **Parchment** (`#F7F4EE` / `oklch(96% 0.008 80)`): background base do light theme. Off-white quente, nunca puro branco.
-- **Parchment Elevated** (`#FFFEFB` / `oklch(99% 0.005 80)`): superfícies elevadas no light theme. Quase branco, mas ainda tingido.
-- **Parchment Line** (`#E6E1D7` / `oklch(90% 0.012 80)`): bordas e divisores no light theme.
+### Marca
 
-### Neutral (Text on opposite mode)
-- **Ash** (`#777268` / `oklch(50% 0.008 80)`): body text secundário, captions. Funciona em ambos os temas.
-- **Ash Soft** (`#B5AFA3` / `oklch(72% 0.008 80)`): meta text, labels descritivos no dark theme.
+- **Brand Blue** (`#1e30f3`): início do degradê.
+- **Brand Pink** (`#e21e80`): fim do degradê. Também é a cor de borda/fio de acento.
+- **Brand Deep** (`#a01d8f`): estado hover sobre superfícies claras.
 
-### Named Rules
+### Texto de acento
 
-**The Single Voice Rule.** Atelier Gold é a única cor saturada do sistema. Em qualquer tela, gold ocupa ≤10% da superfície. Sua raridade é o que dá peso.
+Rosa puro tem 4.4:1 no escuro e 4.4:1 no branco, insuficiente para texto miúdo. Existe um token separado só para texto:
 
-**The Anti-Gradient Rule.** Gradientes são proibidos. Em texto (`background-clip: text`), em superfícies, em CTAs, em qualquer lugar. Hierarquia vem do peso tipográfico e do uso pontual do gold sólido, não de transições suaves entre cores.
+- **accent-text (dark)** `#f2489b`, 5.7:1 sobre `ink`.
+- **accent-text (light)** `#c2186c`, 5.8:1 sobre branco.
 
-**The Warm Neutral Rule.** Nenhum neutro é puro. Todo preto é tingido em direção ao gold (chroma 0.005–0.012, hue 80). Todo branco também. Pureza cromática parece estéril; calor é deliberado.
+Use `--accent` para fios, bordas e decoração; `--accent-text` sempre que a cor for de texto.
 
-## 3. Typography
+### Neutros
 
-**Display Font:** Fraunces (com fallbacks `Cormorant Garamond, Georgia, serif`)
-**Body Font:** Inter (com fallbacks `Plus Jakarta Sans, system-ui, sans-serif`)
-**Label Font:** Inter — mesma família do body, em peso 600 + tracking +0.08em, geralmente uppercase.
+Dark: `ink` (#0e0e11) base, `ink-elevated` (#16171a) para cards, `ink-line` (#26262d) para filetes, `ink-line-strong` (#35353f) para bordas de controle.
 
-**Character:** Fraunces traz personalidade variável e otimização ótica — autoridade calma com leve fragilidade nos eixos de softness. Inter é o neutro confiável, sem opinião própria, deixando o serif brilhar. O contraste serif-display + sans-body é a backbone do tom editorial.
+Light: branco base, `#f7f7f8` elevado, `#e4e3e8` filete.
 
-### Hierarchy
+Texto: `text-primary` (branco ou ink), `text-secondary` para rótulos, `text-muted` para corpo descritivo. Os quatro valores de secondary/muted foram escolhidos por medição: todos ficam entre 5.5:1 e 9:1 nos dois temas.
 
-- **Display** (Fraunces 400, `clamp(2.5rem, 7vw, 5rem)`, line-height 1.05, letter-spacing -0.02em): hero principal, título da página. Uma única ocorrência por tela.
-- **Headline** (Fraunces 500, `clamp(1.75rem, 4vw, 2.75rem)`, line-height 1.15, -0.01em): título de seção. Marca o início de um bloco temático.
-- **Title** (Inter 600, `clamp(1.125rem, 1.5vw, 1.375rem)`, line-height 1.3): título de card, subseção, nome de projeto na galeria.
-- **Body** (Inter 400, `1rem`, line-height 1.6): texto longo. Largura máxima 65ch.
-- **Label** (Inter 600, `0.75rem`, line-height 1.2, letter-spacing 0.08em, UPPERCASE): navegação, botões, badges, metadata de projeto.
+### Regras nomeadas
 
-### Named Rules
+**Degradê só em superfície.** Nunca `background-clip: text`. Texto em degradê enfraquece a leitura e é a marca visual de template genérico. Hierarquia vem de peso e escala.
 
-**The Serif-for-Voice Rule.** Apenas Display e Headline usam Fraunces. Tudo o mais é Inter. Misturar serifa em UI pequena empobrece o ritmo.
+**O acento é raro.** O rosa aparece em categoria de projeto, link ativo, fio de seção e marcadores de lista. Nada mais.
 
-**The 65ch Rule.** Body text nunca passa de 65 caracteres de largura. Acima disso, força quebra com `max-width`.
+**Neutro nenhum é puro cinza.** Todos têm um resto de violeta, coerente com o degradê.
 
-**The Caps Are Earned Rule.** UPPERCASE só em Label (tracking +0.08em). Nunca em Display, nunca em Body, nunca em Headline.
+## 3. Tipografia
 
-## 4. Elevation
+Família única: **Montserrat**. A escolha é herdada da identidade que já estava no ar e foi mantida de propósito.
 
-Sistema flat por convicção. Nenhuma superfície tem shadow em repouso. Profundidade é construída por **tonal layering** — cada nível de elevação muda 1 step de lightness no neutro warm, mantendo a paleta coesa.
+- **Display** (800, `clamp(2.5rem, 6vw, 3.75rem)`, tracking -0.03em): o nome dela, uma vez por página.
+- **Headline** (700, `clamp(1.75rem, 3.5vw, 2.25rem)`): título de seção.
+- **Role** (600, `clamp(1.25rem, 2.6vw, 1.625rem)`): a profissão, logo abaixo do nome, em `accent-text`.
+- **Title** (600, 1.125rem): nome de projeto, termo de lista.
+- **Body** (400, 1rem, line-height 1.65): texto corrido, no máximo 68ch.
+- **Label** (600, 0.8125rem, tracking 0.1em, caixa alta): navegação, botões, categoria de projeto, rótulos de case.
 
-Hover é a única exceção: pode revelar uma soft glow (shadow ambient) em superfícies clicáveis, mas com chroma baixíssima — nunca uma cor saturada.
+**Caixa alta é ganha.** Só em Label. Nunca em título, nunca em corpo.
 
-### Tonal Layers (dark)
-- **Base** (`#181612`): background da página.
-- **Surface +1** (`#221F1A`): cards, nav, footer.
-- **Surface +2** (`#2E2A24`): elementos dentro de cards (input fields em card de form, por ex).
+## 4. Elevação
 
-### Hover Shadow (raro)
-- **`box-shadow: 0 2px 24px rgba(201, 163, 90, 0.08)`** — uma sombra dourada quase imperceptível, só em hover de cards de projeto. Sugere profundidade sem decorar.
+Sistema chapado. Profundidade vem de um degrau de luminosidade (`base` → `elevated`) e de filete de 1px.
 
-### Named Rules
+Exceções, ambas intencionais:
 
-**The Flat By Default Rule.** Cards, nav, footer, sections — todos flat em repouso. Nenhum drop-shadow padrão.
+- `box-shadow: 0 6px 20px -8px rgba(226,30,128,0.55)` sob o botão primário, para ele parecer clicável.
+- `box-shadow: 0 18px 40px -20px rgba(0,0,0,0.6)` + `translateY(-2px)` no hover da peça de projeto.
 
-**The No Shadow Cards Rule.** Cards de projeto (galeria) podem ter um hover-glow dourado ultra-sutil. Cards informativos (skills, educação) permanecem flat até quando hover.
+## 5. Componentes
 
-## 5. Components
+### Gallery Plate
 
-### Buttons
+A peça central. Imagem em janela de proporção fixa **3:2** (`object-fit: cover`), o que alinha a grade mesmo com originais de formatos diferentes, e metadata abaixo: categoria em Label rosa, nome em Title, contexto em body muted. Na página de galeria o mesmo componente recebe um mini case com Objetivo, Desenvolvimento e Resultado.
 
-Funcionalidade nua: tipografia em label uppercase, retângulo levemente arredondado, zero shadow.
+Clique abre lightbox (lightgallery.js). O botão de download é escondido no CSS: o trabalho é para ver, não para baixar.
 
-- **Shape:** retângulo com cantos suavemente arredondados (`4px`).
-- **Primary:** background gold (`#C9A35A`), text ink (`#181612`), padding `14px 28px`, label typography (Inter 600 12px tracking +0.08em UPPER).
-- **Hover:** background gold-deep (`#A6803E`), sem transform.
-- **Focus:** outline `2px solid #C9A35A` com `outline-offset: 2px`.
-- **Ghost:** background transparent, text gold, border `1px solid {colors.ink-line}` (dark) ou `1px solid {colors.parchment-line}` (light). Hover preenche com `ink-elevated`.
-- **WhatsApp flutuante:** circular (`rounded.pill`), background gold, ícone ink. Sutilmente visível, não invasivo.
+### Lista de definição
 
-### Cards
+Para habilidades e educação. Filetes horizontais, termo à esquerda em Title, descrição à direita em body muted, duas colunas a partir de 768px. Escolhida deliberadamente em vez de grade de cards: cinco cards iguais com título e parágrafo é o padrão que faz um portfólio parecer template.
 
-#### Card de projeto (galeria)
-- **Shape:** `border-radius: 12px` (image-friendly).
-- **Background:** `ink-elevated` no dark, `parchment-elevated` no light.
-- **Border:** none por padrão. Hover revela hover-shadow dourada.
-- **Internal padding:** zero ao redor da imagem (fica edge-to-edge); meta info abaixo da imagem em `padding: 16px 0 0 0`.
-- **Meta typography:** Title (Inter 600) pro nome do projeto; Label (Inter 600 uppercase) pra categoria. Atelier Gold só na categoria (3-5 caracteres por categoria, raro).
+### Chips
 
-#### Card informativo (skills, educação, depoimentos)
-- **Shape:** `border-radius: 4px` (mais editorial, menos "image card").
-- **Background:** `ink-elevated` no dark, `parchment-elevated` no light.
-- **Border:** `1px solid {colors.ink-line}` ou `parchment-line`.
-- **Internal padding:** `24px`.
-- **NUNCA nested cards.** Card dentro de card é prohibido.
+Rótulos curtos em linha, com `flex-wrap`. Usados em Ferramentas e no bloco Competências (empatia, resiliência e afins), que fica **abaixo** da lista de habilidades: primeiro o que ela produz, depois como ela trabalha. Chip é para palavra curta; se precisar de descrição, é lista de definição.
 
-### Inputs (form de contato)
+### Mural de feedbacks
 
-Estilo underline-only — minimal e editorial.
+Os 7 prints de conversa, cada um no tamanho natural. Nada de altura forçada nem `object-fit: cover`: recortar print corta mensagem.
 
-- **Style:** sem background, sem border (apenas `border-bottom: 1px solid {colors.ink-line}` no dark, `parchment-line` no light). Padding `12px 0`.
-- **Label:** flutuante sutil, em Label typography (Inter 600 12px tracking +0.08em UPPER), `ash-soft` no dark / `ash` no light.
-- **Focus:** `border-bottom-color: gold`, label vira `gold`. Transição 200ms ease-out.
-- **Error:** `border-bottom-color: gold-deep` (não vermelho — coerência cromática). Mensagem inline em Body typography com cor `gold-deep`.
+Dois modos, decididos por espaço disponível e não por dispositivo:
 
-### Navigation
+- **Até 991px:** faixa deslizante horizontal (`display: flex` + `scroll-snap-type: x mandatory`), cards em `min(82%, 420px)`, sangrando 20px além do container para o próximo card aparecer. O teto de 420px evita que o print passe da largura natural de 560px e fique borrado. Nessa faixa o container só comporta uma coluna, e empilhar 7 prints daria um paredão de scroll.
 
-- **Style:** horizontal bar, sticky no topo. Background `ink` (dark) / `parchment` (light), border-bottom `1px solid {colors.ink-line}`.
-- **Logo:** "MF Designer" em Fraunces 500 1.375rem.
-- **Links:** Label typography (Inter 600 12px tracking +0.08em UPPER). Default `parchment` (dark) / `ink` (light). Hover: `gold`. Active: `gold` com underline gold `2px` em `text-underline-offset: 6px`.
-- **Theme toggle:** ícone simples (sun/moon), sem caixa em volta. Hover muda pra gold.
-- **Mobile:** menu colapsado com hamburger em label uppercase ("MENU"); abre full-height side drawer com mesmos estilos.
+  Card espiando não é affordance suficiente: ninguém entende que rola para o lado. São três sinais somados, e nessa ordem de clareza:
+  1. **Aviso explícito** acima da faixa, em `accent-text` com ícone de seta dupla ("Arraste para o lado para ver os 7"). É HTML estático, funciona sem JS.
+  2. **Indicadores de posição** abaixo, um por print, gerados pelo `scripts.js`. O ativo estica e ganha o degradê. São `<button>` de 40x44px com `aria-label` e `aria-current`, e levam até o print com scroll suave (respeitando `prefers-reduced-motion`). Quem acompanha a posição é um `IntersectionObserver` com a própria faixa como `root`.
+  3. **Esmaecimento das bordas** via `mask-image`, ligado por classe conforme a posição do scroll, então a máscara só aparece do lado que ainda tem conteúdo. O limite considera o padding da sangria: em repouso o `scrollLeft` é 20px, não zero.
+- **De 992px para cima:** `columns: 340px`, ou seja, o navegador cria quantas colunas de 340px couberem (2 em notebook, 3 em tela larga). Sem `column-count` fixo e sem breakpoint: a coluna nunca fica estreita o bastante para a mensagem virar ilegível.
 
-### Signature: Gallery Plate
+O container leva `role="group"`, `tabindex="0"` e `aria-label`, porque região com scroll precisa ser alcançável pelo teclado.
 
-Componente custom pra galeria expandida em `/galeria`. Imagem do projeto edge-to-edge no card. Abaixo, três linhas:
-1. **Categoria** em Label gold uppercase (ex.: "MÍDIA SOCIAL", "LOGOTIPO").
-2. **Nome do projeto** em Title (Inter 600).
-3. **Cliente / contexto** em Body Ash (1-2 linhas, opcional).
+Alturas de coluna ficam desiguais de propósito: é mural, e igualar exigiria cortar conteúdo.
 
-Click expande pra lightbox (lightgallery), mantém o mesmo card-meta abaixo da imagem no overlay.
+### Botões
 
-## 6. Do's and Don'ts
+Retângulo de raio 10px, Label em caixa alta. Primário em degradê com sombra colorida; fantasma transparente com borda `ink-line-strong`. Sobre o painel de degradê, o fantasma inverte para fundo branco.
 
-### Do:
-- **Do** usar **Atelier Gold em ≤10% da superfície** (regra The Single Voice). Aparece em CTAs primários, links ativos, ícones críticos, underlines de seção.
-- **Do** carregar a hierarquia visual com **peso tipográfico** (Display Fraunces 400 vs Body Inter 400 = contraste enorme por família, não por cor).
-- **Do** tingir todo neutro em direção ao gold (chroma 0.005–0.012, hue ~80). Pretos puros (`#000`) e brancos puros (`#fff`) são proibidos.
-- **Do** dar à galeria ar para respirar — `padding: clamp(40px, 8vw, 96px)` em volta da grid de projetos.
-- **Do** tratar o tema light com o **mesmo nível de polish** do dark. Sem "dark default + light afterthought".
+### Navegação
 
-### Don't:
-- **Don't** usar **gradientes**. Em texto (`background-clip: text` + gradient), em superfícies, em CTAs. Em lugar nenhum. (Era a estética principal do site antigo — está oficialmente morta.)
-- **Don't** repetir o **template Bootstrap genérico** — cards idênticos uniformes, hierarquia plana, gradiente roxo→rosa, ar de "startup pessoal". É o anti-reference primário.
-- **Don't** usar **dark com neon roxo/azul** (estética "AI tool" / SaaS). O dark do Atelier é warm e silencioso, não eletrônico.
-- **Don't** usar **script fonts** ou paleta rosa-bebê-com-dourado (kitsch wedding). Atelier Gold é antigo e seco, não chamativo.
-- **Don't** usar **shadows em cards informativos**. Flat em repouso. Hover de cards de projeto é a única exceção, e é uma glow gold ultra-sutil.
-- **Don't** usar **side-stripe borders** (`border-left: 4px solid gold`). Border completo de 1px ou nada.
-- **Don't** misturar **serif em UI miúda**. Fraunces fica restrito a Display e Headline. Tudo abaixo de Title é Inter.
-- **Don't** abusar de **animations**. Apenas transitions de estado (200-300ms ease-out). Reduced-motion respeitado.
-- **Don't** usar **em dashes** (—) em UI copy. Use vírgula, dois-pontos, parênteses, ou ponto.
+Barra com filete inferior. Links em Label, ativo em `accent-text` com sublinhado rosa de 2px. Toggle de tema é um `<button>` de 44px com `role="switch"` e `aria-checked`, focável pelo teclado.
+
+## 6. Raio
+
+Uma escala, três degraus, aplicada sem exceção:
+
+- **10px** em controles: botão, chip, toggle, ícone de rodapé.
+- **14px** em superfícies: peça de projeto, card, print de feedback.
+- **20px** em painéis: moldura da foto, painel de contato.
+- **999px** só no botão flutuante.
+
+Raio interno é concêntrico: a foto do hero tem 12px dentro de uma moldura de 20px com 18px de padding.
+
+## 7. Do's and Don'ts
+
+### Do
+
+- **Do** manter o degradê nos cinco pontos listados no Overview. Ele é a identidade.
+- **Do** medir contraste antes de escolher cor de texto. Os tokens atuais passam AA nos dois temas.
+- **Do** dar à grade de projetos mais espaço vertical que a qualquer outra seção (`.secao--destaque`).
+- **Do** usar `.secao--compacta` em ferramentas e educação: são as seções de menor prioridade.
+- **Do** declarar `width`/`height` e `loading="lazy"` em toda imagem, para não haver salto de layout.
+- **Do** servir as derivadas `-grade.webp` (1200x800) na grade e `-full.webp` no lightbox.
+
+### Don't
+
+- **Don't** usar degradê em texto.
+- **Don't** transformar habilidades, ferramentas ou educação em grade de cards iguais.
+- **Don't** forçar altura igual nos prints de feedback.
+- **Don't** apontar `<img>` para os originais de 3 a 4 MB em `assets/img/projetos/`. Eles são o arquivo-fonte.
+- **Don't** usar travessão em texto de interface. Vírgula, dois-pontos ou parênteses.
+- **Don't** adicionar seção nova sem tirar outra. O portfólio é enxuto de propósito.

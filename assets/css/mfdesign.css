@@ -1,53 +1,52 @@
 /* =============================================================
-   MF Designer — Atelier Window
-   Design system: see DESIGN.md
+   MF Designer — portfólio de Mayara Ferreira
+   Identidade: fundo escuro + degradê azul→rosa em pontos estratégicos.
+   O degradê aparece em superfícies (moldura da foto, painel de contato,
+   botão primário, fio de seção), nunca em texto: o trabalho é o herói.
    ============================================================= */
 
 /* ---- TOKENS ---- */
 :root {
-	/* Brand gradient (rosa-roxo) */
+	/* Marca */
 	--gradient-brand: linear-gradient(135deg, #1e30f3 0%, #e21e80 100%);
-	--gradient-brand-soft: linear-gradient(135deg, rgba(30, 48, 243, 0.12) 0%, rgba(226, 30, 128, 0.12) 100%);
 	--color-brand-blue: #1e30f3;
 	--color-brand-pink: #e21e80;
 	--color-brand-deep: #a01d8f;
 
-	/* Dark — puxado pro preto puro, sem tinte warm */
+	/* Dark */
 	--color-ink: #0e0e11;
 	--color-ink-elevated: #16171a;
-	--color-ink-line: #24252a;
+	--color-ink-line: #26262d;
 
-	/* Light — neutro frio */
+	/* Light */
 	--color-parchment: #ffffff;
 	--color-parchment-elevated: #f7f7f8;
-	--color-parchment-line: #e5e5e8;
+	--color-parchment-line: #e4e3e8;
 
-	/* Neutros de texto */
-	--color-ash: #6b6b72;
-	--color-ash-soft: #a0a0a8;
-
-	/* Semantic — dark default */
+	/* Semântico — dark é o padrão.
+	   Neutros levemente puxados pro violeta (entre o azul e o rosa da marca).
+	   Valores de texto verificados em WCAG AA (≥4.5:1) sobre base e superfície. */
 	--bg-base: var(--color-ink);
 	--bg-elevated: var(--color-ink-elevated);
 	--border-subtle: var(--color-ink-line);
-	--text-primary: var(--color-parchment);
-	--text-secondary: var(--color-ash-soft);
-	--text-muted: var(--color-ash);
+	--border-strong: #35353f;
+	--text-primary: #ffffff;
+	--text-secondary: #b4b1bd;
+	--text-muted: #a09daa;
 	--accent: var(--color-brand-pink);
-	--accent-hover: var(--color-brand-deep);
-	--accent-soft: var(--gradient-brand-soft);
+	/* Rosa puro tem 4.3:1 no escuro: insuficiente pra texto miúdo. */
+	--accent-text: #f2489b;
 
-	/* Type — Montserrat single family, hierarquia por weight */
+	/* Type — Montserrat, hierarquia por peso e escala */
 	--font-display: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-	--font-body: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	--font-body: var(--font-display);
 
-	/* Scale (título ~3em, subtítulo ~2em, body 16px, label 13px) */
-	--fs-display: clamp(2.25rem, 5.5vw, 3rem);    /* 36-48px */
-	--fs-headline: clamp(1.5rem, 3.5vw, 2rem);    /* 24-32px */
-	--fs-h3: clamp(1.25rem, 2.5vw, 1.5rem);       /* 20-24px */
-	--fs-title: 1.125rem;                          /* 18px */
-	--fs-body: 1rem;                               /* 16px */
-	--fs-label: 0.8125rem;                         /* 13px */
+	--fs-display: clamp(2.5rem, 6vw, 3.75rem);
+	--fs-headline: clamp(1.75rem, 3.5vw, 2.25rem);
+	--fs-role: clamp(1.25rem, 2.6vw, 1.625rem);
+	--fs-title: 1.125rem;
+	--fs-body: 1rem;
+	--fs-label: 0.8125rem;
 
 	/* Spacing */
 	--space-xs: 4px;
@@ -56,15 +55,12 @@
 	--space-lg: 24px;
 	--space-xl: 40px;
 	--space-xxl: 64px;
-	--space-section: clamp(64px, 10vw, 96px);
 
-	/* Radius */
-	--radius-none: 0;
-	--radius-sm: 2px;
-	--radius-md: 4px;
-	--radius-lg: 8px;
-	--radius-xl: 16px;
-	--radius-image: 12px;
+	/* Raio: uma escala, três degraus. Controles < superfícies < painéis. */
+	--radius-rule: 3px;
+	--radius-control: 10px;
+	--radius-surface: 14px;
+	--radius-panel: 20px;
 	--radius-pill: 999px;
 
 	/* Motion */
@@ -75,14 +71,15 @@
 	--dur-slow: 400ms;
 }
 
-/* Light theme overrides */
 [data-theme="light"] {
 	--bg-base: var(--color-parchment);
 	--bg-elevated: var(--color-parchment-elevated);
 	--border-subtle: var(--color-parchment-line);
+	--border-strong: #cfced6;
 	--text-primary: var(--color-ink);
-	--text-secondary: var(--color-ash);
-	--text-muted: var(--color-ash-soft);
+	--text-secondary: #5b5862;
+	--text-muted: #66626e;
+	--accent-text: #c2186c;
 }
 
 /* ---- GLOBAL ---- */
@@ -93,26 +90,17 @@ body {
 	color: var(--text-primary) !important;
 	font-family: var(--font-body) !important;
 	font-size: var(--fs-body);
-	line-height: 1.6;
+	line-height: 1.65;
+	-webkit-font-smoothing: antialiased;
 	transition: background-color var(--dur-base) var(--ease-standard), color var(--dur-base) var(--ease-standard);
 }
 
-/* Brand gradient — reativado como acento principal */
 .bg-gradient-primary-to-secondary {
 	background: var(--gradient-brand) !important;
 	background-image: var(--gradient-brand) !important;
 	color: #fff !important;
 }
 
-.text-gradient {
-	background: var(--gradient-brand) !important;
-	-webkit-background-clip: text !important;
-	background-clip: text !important;
-	-webkit-text-fill-color: transparent !important;
-	color: transparent !important;
-}
-
-/* Bootstrap bg helpers → tokens */
 .bg-dark,
 [data-theme] .bg-dark {
 	background-color: var(--bg-base) !important;
@@ -124,56 +112,59 @@ body {
 	color: var(--text-primary) !important;
 }
 
-/* ---- TYPOGRAPHY ---- */
+::selection {
+	background: var(--color-brand-pink);
+	color: #fff;
+}
+
+/* ---- TIPOGRAFIA ---- */
+/* Wordmark sólido: styles.css aplicava degradê no texto, o que enfraquece a leitura */
 .logotipo {
 	font-family: var(--font-display) !important;
 	font-weight: 700;
-	font-size: 1.25rem;
-	letter-spacing: 0.02em;
+	font-size: 1.125rem;
+	letter-spacing: 0.06em;
 	text-transform: uppercase;
-	color: var(--text-primary);
+	background: none !important;
+	-webkit-background-clip: border-box !important;
+	background-clip: border-box !important;
+	-webkit-text-fill-color: currentColor !important;
+	color: var(--text-primary) !important;
 	margin: 0;
+	transition: color var(--dur-fast) var(--ease-standard);
 }
+.navbar-brand:hover .logotipo { color: var(--accent-text) !important; }
 
 h1, .h1 {
 	font-family: var(--font-display) !important;
-	font-weight: 700;
+	font-weight: 800;
 	font-size: var(--fs-display);
-	line-height: 1.1;
-	letter-spacing: -0.02em;
+	line-height: 1.05;
+	letter-spacing: -0.03em;
 	color: var(--text-primary) !important;
 }
 
 h2, .h2 {
 	font-family: var(--font-display) !important;
-	font-weight: 600;
+	font-weight: 700;
 	font-size: var(--fs-headline);
-	line-height: 1.2;
-	letter-spacing: -0.01em;
+	line-height: 1.15;
+	letter-spacing: -0.02em;
 	color: var(--text-primary) !important;
 }
 
 h3, .h3 {
 	font-family: var(--font-display) !important;
 	font-weight: 600;
-	font-size: var(--fs-h3);
+	font-size: var(--fs-title);
 	line-height: 1.3;
 	color: var(--text-primary) !important;
 }
 
-h4, .h4, h5, .h5 {
+h4, .h4, h5, .h5, h6, .h6 {
 	font-family: var(--font-body) !important;
 	font-weight: 600;
 	color: var(--text-primary) !important;
-}
-
-h6, .h6 {
-	font-family: var(--font-body) !important;
-	font-weight: 600;
-	font-size: var(--fs-label);
-	letter-spacing: 0.08em;
-	text-transform: none;
-	color: var(--text-secondary) !important;
 }
 
 p, li { color: var(--text-primary); }
@@ -183,37 +174,45 @@ p, li { color: var(--text-primary); }
 .text-light,
 .text-secondary { color: var(--text-primary) !important; }
 
-/* .feature — caixinha gradient com ícone branco. Sempre #fff em qualquer tema. */
-.feature,
-.feature i,
-.feature.text-white {
-	color: #fff !important;
-}
-.feature {
-	background: var(--gradient-brand) !important;
-	background-image: var(--gradient-brand) !important;
-}
-
-/* Max line length for body copy */
-main p { max-width: 65ch; }
+/* Medida de leitura confortável */
+main p { max-width: 68ch; }
 main .text-center p { margin-left: auto; margin-right: auto; }
+
+a { text-underline-offset: 3px; }
+
+/* Margem lateral consistente em todas as páginas */
+.container { padding-inline: 20px; }
+@media (min-width: 768px) {
+	.container { padding-inline: var(--space-lg); }
+}
 
 /* ---- NAV ---- */
 .navbar {
 	background: var(--bg-base) !important;
 	border-bottom: 1px solid var(--border-subtle);
-	padding: var(--space-lg) 0 !important;
+	padding: var(--space-md) 0 !important;
 }
 
-.navbar-brand { padding: 0; }
+/* alvo de toque de 44px; a cor vem do token, não do rgba(0,0,0,.9) do Bootstrap */
+.navbar-brand {
+	padding: 0;
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	color: var(--text-primary) !important;
+}
+.navbar-brand:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 4px;
+	border-radius: var(--radius-rule);
+}
 
-/* Specificity bump (.navbar .nav-link) pra vencer .text-light do Bootstrap */
 .navbar .nav-link,
 .nav-link {
 	font-family: var(--font-body) !important;
 	font-weight: 600 !important;
-	font-size: 1rem !important;
-	letter-spacing: 0.06em !important;
+	font-size: var(--fs-label) !important;
+	letter-spacing: 0.1em !important;
 	text-transform: uppercase;
 	color: var(--text-primary) !important;
 	padding: var(--space-sm) 0 !important;
@@ -222,161 +221,152 @@ main .text-center p { margin-left: auto; margin-right: auto; }
 	transition: color var(--dur-fast) var(--ease-standard), border-color var(--dur-fast) var(--ease-standard);
 }
 .navbar .nav-link:hover,
-.nav-link:hover { color: var(--accent) !important; }
+.nav-link:hover { color: var(--accent-text) !important; }
 .navbar .nav-link.active,
 .nav-link.active {
-	color: var(--accent) !important;
+	color: var(--accent-text) !important;
 	border-bottom-color: var(--accent);
 }
-
-/* Toggle de tema — visual mais sólido */
-.form-check.form-switch {
-	margin-left: var(--space-md);
-	padding-left: 0;
-	min-height: auto;
+.navbar .nav-link:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 4px;
+	border-radius: var(--radius-rule);
 }
-.form-check.form-switch .form-check-label {
-	cursor: pointer;
+
+.navbar-toggler {
+	border: 1px solid var(--border-subtle) !important;
+	border-radius: var(--radius-control) !important;
+	padding: var(--space-sm) 10px !important;
+}
+.navbar-toggler:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+	box-shadow: none !important;
+}
+
+/* Alvo de toque de 44px no mobile, onde o menu abre empilhado */
+@media (max-width: 991.98px) {
+	.navbar .nav-link,
+	.nav-link {
+		margin: 0;
+		padding: 12px 0 !important;
+		display: block;
+	}
+}
+
+/* Toggle de tema: botão real, focável pelo teclado */
+.tema-toggle {
 	display: inline-flex;
 	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	margin-left: var(--space-sm);
+	padding: 0;
+	background: transparent;
+	border: 1px solid transparent;
+	border-radius: var(--radius-control);
 	color: var(--text-primary);
-	font-size: 1.25rem;
-	transition: color var(--dur-fast) var(--ease-standard);
+	font-size: 1.0625rem;
+	line-height: 1;
+	cursor: pointer;
+	transition: color var(--dur-fast) var(--ease-standard), border-color var(--dur-fast) var(--ease-standard);
 }
-.form-check.form-switch .form-check-label:hover { color: var(--accent); }
-.form-check.form-switch .form-check-input { display: none; }
+.tema-toggle:hover {
+	color: var(--accent-text);
+	border-color: var(--border-subtle);
+}
+.tema-toggle:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+}
+@media (max-width: 991.98px) {
+	.tema-toggle { margin-left: -10px; }
+}
 
-/* ---- BUTTONS ---- */
+/* ---- BOTÕES ---- */
 .btn {
 	font-family: var(--font-body) !important;
 	font-weight: 600 !important;
 	font-size: var(--fs-label) !important;
 	letter-spacing: 0.08em !important;
 	text-transform: uppercase;
-	border-radius: var(--radius-md) !important;
-	padding: 14px 28px !important;
+	border-radius: var(--radius-control) !important;
+	padding: 15px 28px !important;
 	border: none;
-	transition: background var(--dur-fast) var(--ease-standard), border-color var(--dur-fast) var(--ease-standard), color var(--dur-fast) var(--ease-standard), transform var(--dur-base) var(--ease-out-quart);
+	transition: background var(--dur-fast) var(--ease-standard), border-color var(--dur-fast) var(--ease-standard),
+		color var(--dur-fast) var(--ease-standard), transform var(--dur-base) var(--ease-out-quart),
+		box-shadow var(--dur-base) var(--ease-out-quart);
 }
 .btn:focus-visible {
 	outline: 2px solid var(--accent);
 	outline-offset: 2px;
 	box-shadow: none !important;
 }
+.btn:active { transform: translateY(1px); }
 
 .btn-primary {
 	background: var(--gradient-brand) !important;
 	background-image: var(--gradient-brand) !important;
 	color: #fff !important;
 	border: none !important;
+	box-shadow: 0 6px 20px -8px rgba(226, 30, 128, 0.55);
 }
 .btn-primary:hover {
-	filter: brightness(1.1);
 	color: #fff !important;
+	box-shadow: 0 10px 28px -8px rgba(226, 30, 128, 0.7);
+	transform: translateY(-1px);
 }
 
 .btn-outline-primary,
-.btn-outline-dark {
-	background: transparent !important;
-	color: var(--accent) !important;
-	border: 1px solid var(--border-subtle) !important;
-}
-.btn-outline-primary:hover,
-.btn-outline-dark:hover {
-	background: var(--bg-elevated) !important;
-	color: var(--accent) !important;
-	border-color: var(--accent) !important;
-}
-
+.btn-outline-dark,
 .btn-light {
 	background: transparent !important;
-	color: var(--accent) !important;
-	border: 1px solid var(--border-subtle) !important;
+	color: var(--text-primary) !important;
+	border: 1px solid var(--border-strong) !important;
 }
+.btn-outline-primary:hover,
+.btn-outline-dark:hover,
 .btn-light:hover {
 	background: var(--bg-elevated) !important;
+	color: var(--accent-text) !important;
 	border-color: var(--accent) !important;
-	color: var(--accent) !important;
-}
-.btn-light .text-gradient { color: var(--accent) !important; }
-
-/* Kill rounded-pill on CTAs (Atelier não usa pill) */
-.btn.rounded-pill { border-radius: var(--radius-md) !important; }
-
-/* ---- CARDS ---- */
-.card {
-	background: var(--bg-elevated) !important;
-	border: 1px solid var(--border-subtle) !important;
-	border-radius: var(--radius-md) !important;
-	box-shadow: none !important;
-	color: var(--text-primary) !important;
 }
 
-.card-body { padding: var(--space-lg) !important; }
-
-.card-servicos { border-radius: var(--radius-md) !important; }
-.card-servicos .card-title {
-	font-family: var(--font-body) !important;
-	font-weight: 600;
-	font-size: var(--fs-label);
-	letter-spacing: 0.08em;
-	text-transform: uppercase;
-	color: var(--accent) !important;
-	margin-bottom: var(--space-md);
-}
-
-.card-skills,
-.card-educacao {
-	border: 1px solid var(--border-subtle) !important;
-	border-radius: var(--radius-md) !important;
-}
-.card-educacao .text-secondary {
-	color: var(--text-primary) !important;
-	font-family: var(--font-body);
-	font-weight: 600;
-	font-size: 0.95rem;
-}
-
-/* Skills cells: kill nested bg-dark, simplify */
-.card-skills .border {
-	border: 1px solid var(--border-subtle) !important;
-	background: transparent !important;
-	border-radius: var(--radius-md) !important;
-	font-family: var(--font-body);
-	font-weight: 500;
-}
+.btn.rounded-pill { border-radius: var(--radius-control) !important; }
 
 /* ---- HERO ---- */
-.hero { padding-block: clamp(48px, 10vw, 120px); }
+.hero { padding-block: clamp(56px, 9vw, 112px) clamp(48px, 7vw, 88px); }
 
 .hero-eyebrow {
 	font-family: var(--font-body);
 	font-weight: 600;
 	font-size: var(--fs-label);
-	letter-spacing: 0.08em;
+	letter-spacing: 0.12em;
 	text-transform: uppercase;
 	color: var(--text-secondary);
-	margin: 0 0 var(--space-lg);
+	margin: 0 0 var(--space-md);
 }
 
-/* Hero badge — card com gradient + border, itens alinhados via flex */
+/* Badge de áreas: mostra o repertório de relance, em versão compacta */
 .hero-badge {
 	display: inline-flex;
 	flex-wrap: wrap;
 	align-items: center;
-	gap: 4px 14px;
+	gap: 2px 10px;
 	background: var(--gradient-brand);
 	background-image: var(--gradient-brand);
 	color: #fff !important;
 	font-family: var(--font-body);
-	font-weight: 600;
-	font-size: var(--fs-label);
-	letter-spacing: 0.08em;
+	/* peso 700 compensa a legibilidade nesse corpo pequeno */
+	font-weight: 700;
+	font-size: 0.65rem;
+	letter-spacing: 0.09em;
 	text-transform: uppercase;
-	padding: 10px 20px;
-	border-radius: 10px;
-	border: 1px solid rgba(255, 255, 255, 0.28);
-	box-shadow: 0 4px 18px rgba(30, 48, 243, 0.22);
+	padding: 6px 12px;
+	border-radius: var(--radius-control);
+	box-shadow: 0 6px 18px -8px rgba(30, 48, 243, 0.6);
+	margin: 0 0 var(--space-lg);
 	max-width: 100%;
 }
 .hero-badge span {
@@ -386,36 +376,52 @@ main .text-center p { margin-left: auto; margin-right: auto; }
 }
 .hero-badge span:not(:last-child)::after {
 	content: '·';
-	margin-left: 14px;
-	color: rgba(255, 255, 255, 0.55);
+	margin-left: 10px;
+	color: rgba(255, 255, 255, 0.6);
 	font-weight: 400;
+}
+/* No celular a badge quebra em duas linhas: sem separador não sobra ponto solto no fim da linha */
+@media (max-width: 575.98px) {
+	.hero-badge { gap: 4px 14px; }
+	.hero-badge span:not(:last-child)::after { content: none; }
+}
+
+/* A profissão vem imediatamente abaixo do nome */
+.hero-role {
+	font-family: var(--font-display);
+	font-weight: 600;
+	font-size: var(--fs-role);
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+	color: var(--accent-text);
+	margin: var(--space-sm) 0 0;
 }
 
 .hero-sub {
 	font-family: var(--font-body);
 	font-size: 1.125rem;
-	line-height: 1.55;
+	line-height: 1.6;
 	color: var(--text-muted);
 	margin: var(--space-lg) 0 var(--space-xl);
-	max-width: 50ch;
+	max-width: 44ch;
 }
 
 .profile {
 	background: var(--gradient-brand) !important;
 	background-image: var(--gradient-brand) !important;
-	border-radius: 24px !important;
+	border-radius: var(--radius-panel) !important;
 	position: relative;
 	width: 100%;
-	max-width: 320px;
-	max-height: none;
+	/* os pontos decorativos avançam 12px pra fora: reserva folga pra não gerar scroll lateral */
+	max-width: min(320px, calc(100% - 32px));
 	aspect-ratio: 4 / 5;
 	padding: 36px 18px 18px;
 	overflow: visible;
-	box-shadow: 0 12px 40px rgba(30, 48, 243, 0.25);
+	box-shadow: 0 18px 48px -16px rgba(30, 48, 243, 0.5);
 }
 
 @media (min-width: 768px) {
-	.profile { max-width: 460px !important;}
+	.profile { max-width: 420px !important; }
 }
 
 .profile-img {
@@ -429,18 +435,19 @@ main .text-center p { margin-left: auto; margin-right: auto; }
 	max-width: none;
 	object-fit: cover;
 	object-position: center top;
-	border-radius: 16px !important;
+	/* raio interno = raio externo menos o padding, pra concentricidade */
+	border-radius: 12px !important;
 	display: block;
 }
 
-/* SVG dots decorativos — re-ativados e dimensionados pro novo layout */
+/* Pontos decorativos da moldura */
 .profile .dots-1,
 .profile .dots-2,
 .profile .dots-3,
 .profile .dots-4 {
 	display: block !important;
 	position: absolute;
-	width: 24px;
+	width: 22px;
 	height: auto;
 	pointer-events: none;
 }
@@ -452,84 +459,112 @@ main .text-center p { margin-left: auto; margin-right: auto; }
 	height: auto;
 	display: block;
 }
-
 .profile .dots-1 { top: 14px; right: 18px; }
-.profile .dots-1 svg { fill: #fff; }
-
-.profile .dots-2 { top: 32px; right: -14px; }
+.profile .dots-1 svg { fill: rgba(255, 255, 255, 0.9); }
+.profile .dots-2 { top: 32px; right: -12px; }
 .profile .dots-2 svg { fill: var(--color-brand-blue); }
-
 .profile .dots-3 { bottom: 32px; left: 18px; }
-.profile .dots-3 svg { fill: #fff; }
-
-.profile .dots-4 { bottom: 14px; left: -14px; }
+.profile .dots-3 svg { fill: rgba(255, 255, 255, 0.9); }
+.profile .dots-4 { bottom: 14px; left: -12px; }
 .profile .dots-4 svg { fill: var(--color-brand-blue); }
 
-/* Hero badge — simplifica */
-header .badge.bg-gradient-primary-to-secondary {
-	background: transparent !important;
-	border: 1px solid var(--border-subtle);
-	color: var(--text-secondary) !important;
-	font-family: var(--font-body);
-	font-weight: 600;
-	font-size: var(--fs-label);
-	letter-spacing: 0.08em;
-	text-transform: uppercase;
-	padding: 8px 16px !important;
-	border-radius: var(--radius-md) !important;
-}
+/* ---- SEÇÕES ---- */
+/* Só padding-top, pra não somar com o da seção seguinte.
+   O ritmo varia: projetos respiram mais, ferramentas e educação menos. */
+.secao { padding-block: clamp(56px, 8vw, 96px) 0; }
+.secao--destaque { padding-block: clamp(64px, 9vw, 120px) 0; }
+.secao--compacta { padding-block: clamp(40px, 5vw, 64px) 0; }
+.secao:last-child { padding-bottom: clamp(56px, 8vw, 96px); }
 
-/* ---- GALERIA ---- */
-.galeria-projetos { padding-block: var(--space-md); }
-
-.galeria-projetos .lightgallery-item {
-	border-radius: var(--radius-image);
-	overflow: hidden;
-	background: var(--bg-elevated);
-	transition: box-shadow var(--dur-base) var(--ease-out-quart), transform var(--dur-base) var(--ease-out-quart);
-	cursor: pointer;
+.secao-titulo {
+	font-family: var(--font-display) !important;
+	font-weight: 700;
+	font-size: var(--fs-headline);
+	line-height: 1.15;
+	letter-spacing: -0.02em;
+	color: var(--text-primary) !important;
+	margin: 0;
 }
-.galeria-projetos .lightgallery-item img {
-	background: transparent !important;
-	border-radius: var(--radius-image) !important;
+/* O fio de degradê é o acento da seção */
+.secao-titulo::after,
+.com-fio::after {
+	content: '';
 	display: block;
-	width: 100%;
-	height: auto;
-	transition: transform var(--dur-slow) var(--ease-out-quart);
+	width: 44px;
+	height: 3px;
+	background: var(--gradient-brand);
+	border-radius: var(--radius-rule);
+	margin-top: var(--space-md);
 }
-.galeria-projetos .lightgallery-item:hover {
-	box-shadow: 0 4px 28px rgba(226, 30, 128, 0.18);
-}
-.galeria-projetos .lightgallery-item:hover img {
-	transform: scale(1.02);
+.secao-titulo--centro::after { margin-inline: auto; }
+
+.secao-sub {
+	font-size: 1.0625rem;
+	line-height: 1.6;
+	color: var(--text-muted);
+	margin: var(--space-lg) 0 0;
 }
 
-/* Gallery Plate (galeria expandida — metadata abaixo da imagem) */
+.secao-head { margin-bottom: var(--space-xl); }
+
+/* Um degrau abaixo do título de seção: sem fio de degradê, pra hierarquia ficar óbvia */
+.sub-titulo {
+	font-family: var(--font-display) !important;
+	font-weight: 600;
+	font-size: var(--fs-title);
+	letter-spacing: -0.01em;
+	color: var(--text-primary) !important;
+	margin: 0 0 var(--space-md);
+}
+
+.sobre-texto p { margin-bottom: var(--space-md); }
+.sobre-texto p:last-child { margin-bottom: 0; }
+
+/* ---- PROJETOS (Gallery Plate) ---- */
+.galeria-projetos .lightgallery-item { cursor: zoom-in; }
+
 .ds-plate {
 	background: var(--bg-elevated);
 	border: 1px solid var(--border-subtle);
-	border-radius: var(--radius-image);
+	border-radius: var(--radius-surface);
 	overflow: hidden;
-	transition: box-shadow var(--dur-base) var(--ease-out-quart);
 	display: flex;
 	flex-direction: column;
 	height: 100%;
+	transition: border-color var(--dur-base) var(--ease-out-quart), box-shadow var(--dur-base) var(--ease-out-quart),
+		transform var(--dur-base) var(--ease-out-quart);
 }
-.ds-plate:hover { box-shadow: 0 4px 28px rgba(226, 30, 128, 0.18); }
+.ds-plate:hover {
+	border-color: var(--border-strong);
+	box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.6);
+	transform: translateY(-2px);
+}
+
+/* Janela de proporção fixa: a grade alinha mesmo com originais de formatos diferentes */
 .ds-plate__img-wrap {
 	display: block;
+	position: relative;
+	aspect-ratio: 3 / 2;
 	overflow: hidden;
-	background: var(--color-ink);
+	background: var(--bg-elevated);
+	/* separa a imagem da metadata quando a peça tem fundo claro */
+	border-bottom: 1px solid var(--border-subtle);
+}
+.ds-plate__img-wrap:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: -3px;
 }
 .ds-plate__img {
 	display: block;
 	width: 100%;
-	height: auto;
+	height: 100%;
+	object-fit: cover;
 	transition: transform var(--dur-slow) var(--ease-out-quart);
 }
-.ds-plate:hover .ds-plate__img { transform: scale(1.02); }
+.ds-plate:hover .ds-plate__img { transform: scale(1.03); }
+
 .ds-plate__meta {
-	padding: var(--space-md) var(--space-lg) var(--space-lg);
+	padding: var(--space-lg);
 	flex: 1;
 	display: flex;
 	flex-direction: column;
@@ -539,65 +574,290 @@ header .badge.bg-gradient-primary-to-secondary {
 	font-family: var(--font-body);
 	font-weight: 600;
 	font-size: var(--fs-label);
-	letter-spacing: 0.08em;
+	letter-spacing: 0.1em;
 	text-transform: uppercase;
-	color: var(--accent);
+	color: var(--accent-text);
 	margin: 0;
 }
 .ds-plate__title {
-	font-family: var(--font-body) !important;
-	font-weight: 600 !important;
+	font-family: var(--font-display) !important;
+	font-weight: 700 !important;
 	font-size: var(--fs-title) !important;
 	line-height: 1.3 !important;
+	letter-spacing: -0.01em;
 	color: var(--text-primary) !important;
-	margin: 0;
+	margin: 2px 0 0;
 }
 .ds-plate__ctx {
+	font-size: var(--fs-body);
+	line-height: 1.55;
+	color: var(--text-muted);
+	margin: var(--space-xs) 0 0;
+}
+
+/* Mini case: objetivo, desenvolvimento, resultado */
+.ds-case { margin-top: var(--space-md); }
+.ds-case__label {
 	font-family: var(--font-body);
-	font-weight: 400;
+	font-weight: 600;
+	font-size: var(--fs-label);
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--text-secondary);
+	margin: var(--space-lg) 0 var(--space-xs);
+}
+.ds-case__label:first-child { margin-top: 0; }
+.ds-case__text {
 	font-size: var(--fs-body);
 	line-height: 1.55;
 	color: var(--text-muted);
 	margin: 0;
 }
+.ds-case__list {
+	margin: 0;
+	padding-left: 1.1rem;
+}
+.ds-case__list li {
+	font-size: var(--fs-body);
+	line-height: 1.5;
+	color: var(--text-muted);
+	margin-bottom: 2px;
+}
+.ds-case__list li::marker { color: var(--accent); }
 
-/* ---- CTA SECTION (gradient bg) ---- */
-.cta {
-	border: none !important;
-	border-radius: var(--radius-image) !important;
-	padding: var(--space-xxl) var(--space-lg) !important;
+/* Lightbox: fundo na cor da marca. O botão de download é removido no CSS porque
+   a opção do lightgallery.js 1.x não é respeitada nesta versão. */
+.lg-backdrop { background-color: var(--color-ink) !important; }
+.lg-toolbar { background-color: rgba(14, 14, 17, 0.9) !important; }
+.lg-download { display: none !important; }
+.lg-toolbar .lg-icon:focus-visible,
+.lg-actions .lg-icon:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: -2px;
 }
-.cta h3, .cta p { color: #fff !important; }
-.cta .icon-tabler-heart-handshake { stroke: #fff; }
-.cta .btn-light {
-	background: rgba(255, 255, 255, 0.95) !important;
-	color: var(--color-ink) !important;
-	border: none !important;
-}
-.cta .btn-light:hover {
-	background: #fff !important;
-	color: var(--color-brand-pink) !important;
-}
-.cta .btn-light .text-gradient { color: var(--color-brand-pink) !important; -webkit-text-fill-color: currentColor !important; background: none !important; }
 
-/* ---- DEPOIMENTOS ---- */
-.depoimento-item-responsive .depoimento-item img {
-	border-radius: var(--radius-image) !important;
+/* ---- LISTA DE DEFINIÇÃO (habilidades, educação) ---- */
+/* Filetes em vez de caixas: menos peso visual que uma grade de cards iguais */
+.lista-def {
+	border-top: 1px solid var(--border-subtle);
+	margin: 0;
+}
+.lista-def__item {
+	display: grid;
+	gap: var(--space-xs) var(--space-xl);
+	padding: var(--space-lg) 0;
+	border-bottom: 1px solid var(--border-subtle);
+	margin: 0;
+}
+@media (min-width: 768px) {
+	.lista-def__item {
+		grid-template-columns: minmax(190px, 1fr) 2fr;
+		align-items: baseline;
+	}
+}
+.lista-def__termo {
+	font-family: var(--font-display);
+	font-weight: 600;
+	font-size: var(--fs-title);
+	line-height: 1.35;
+	color: var(--text-primary);
+	margin: 0;
+}
+.lista-def__desc {
+	font-size: var(--fs-body);
+	line-height: 1.6;
+	color: var(--text-muted);
+	margin: 0;
+	max-width: 60ch;
+}
+
+/* Competências pessoais: bloco secundário, abaixo do que ela produz */
+.habilidades-extra { margin-top: var(--space-xl); }
+
+/* ---- CHIPS (ferramentas, competências) ---- */
+.chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-sm);
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.chip {
+	display: inline-flex;
+	align-items: center;
+	padding: 11px 18px;
+	background: var(--bg-elevated);
+	border: 1px solid var(--border-subtle);
+	border-radius: var(--radius-control);
+	font-size: var(--fs-label);
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	color: var(--text-primary);
+	transition: border-color var(--dur-base) var(--ease-out-quart), color var(--dur-base) var(--ease-out-quart);
+}
+/* Hover discreto: só a borda ganha o rosa da marca */
+.chip:hover {
+	border-color: var(--accent);
+	color: var(--accent-text);
+}
+
+/* ---- FEEDBACKS ---- */
+/* Prints têm formatos muito diferentes; colunas deixam cada um no tamanho
+   natural, sem cortar mensagem nem forçar altura igual. */
+/* Colunas fluidas por largura, não por breakpoint: o navegador cria quantas
+   colunas de 340px couberem. 1 no celular, 2 em tablet, 3 no desktop largo,
+   sempre com coluna larga o bastante pra mensagem ficar legível. */
+.mural {
+	columns: 340px;
+	column-gap: var(--space-lg);
+}
+.mural__item {
+	break-inside: avoid;
+	margin: 0 0 var(--space-lg);
+}
+.mural__img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: var(--radius-surface);
 	border: 1px solid var(--border-subtle);
 }
 
-.lSAction > .lSPrev,
-.lSAction > .lSNext {
-	background: var(--bg-elevated) !important;
-	border-radius: var(--radius-pill) !important;
-	width: 40px;
-	height: 40px;
+/* Celular e tablet: empilhar 7 prints daria um paredão de scroll, e nessa faixa
+   o container só comporta 1 coluna. Vira faixa deslizante com scroll-snap
+   nativo (sem JS), sangrando até a borda da tela pra mostrar que tem mais ao
+   lado. As colunas voltam a partir de 992px, onde cabem 2 ou 3. */
+@media (max-width: 991.98px) {
+	.mural {
+		columns: auto;
+		display: flex;
+		align-items: flex-start;
+		gap: var(--space-md);
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		scroll-snap-type: x mandatory;
+		margin-inline: -20px;
+		padding: 0 20px var(--space-sm);
+		scrollbar-width: none;
+	}
+	.mural::-webkit-scrollbar { display: none; }
+	.mural:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 4px;
+		border-radius: var(--radius-surface);
+	}
+	.mural__item {
+		/* 82% deixa o próximo card aparecendo; o teto de 420px evita que o print
+		   passe da largura natural (560px) e fique borrado no tablet */
+		flex: 0 0 min(82%, 420px);
+		margin: 0;
+		scroll-snap-align: start;
+	}
+
+	/* Esmaecimento na borda: mostra que o conteúdo continua. As classes são
+	   ligadas pelo scripts.js conforme a posição do scroll, então a máscara
+	   desaparece quando não há mais para onde ir. */
+	.mural.tem-mais-direita:not(.tem-mais-esquerda) {
+		mask-image: linear-gradient(to right, #000 80%, transparent 100%);
+	}
+	.mural.tem-mais-esquerda.tem-mais-direita {
+		mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 80%, transparent 100%);
+	}
+	.mural.tem-mais-esquerda:not(.tem-mais-direita) {
+		mask-image: linear-gradient(to right, transparent 0, #000 6%);
+	}
+
 }
 
-/* ---- FORM (Underline Input) ---- */
+/* Aviso e indicadores só existem no modo faixa */
+.mural-dica {
+	display: none;
+	align-items: center;
+	gap: var(--space-sm);
+	font-size: var(--fs-label);
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--accent-text);
+	margin: var(--space-md) 0 0;
+}
+
+.mural-dots {
+	display: none;
+	justify-content: center;
+	align-items: center;
+	gap: 2px;
+	margin-top: var(--space-sm);
+}
+.mural-dots button {
+	width: 40px;
+	height: 44px;
+	padding: 0;
+	border: none;
+	background: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+.mural-dots button::after {
+	content: '';
+	width: 7px;
+	height: 7px;
+	border-radius: var(--radius-pill);
+	background: var(--border-strong);
+	transition: width var(--dur-base) var(--ease-out-quart), background var(--dur-base) var(--ease-out-quart);
+}
+.mural-dots button[aria-current="true"]::after {
+	width: 22px;
+	background: var(--gradient-brand);
+}
+.mural-dots button:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: -6px;
+	border-radius: var(--radius-control);
+}
+
+/* Depois das regras base, senão o display:none acima venceria no cascade */
+@media (max-width: 991.98px) {
+	.mural-dica { display: inline-flex; }
+	.mural-dots { display: flex; }
+}
+
+/* ---- PAINEL DE CONTATO ---- */
+.cta {
+	border: none !important;
+	border-radius: var(--radius-panel) !important;
+	padding: clamp(40px, 6vw, 72px) var(--space-lg) !important;
+}
+.cta h2, .cta p { color: #fff !important; }
+.cta p { max-width: 48ch; }
+.cta .icon-tabler-heart-handshake {
+	stroke: #fff;
+	vertical-align: -4px;
+	margin-left: var(--space-sm);
+}
+.cta .btn-light {
+	background: rgba(255, 255, 255, 0.96) !important;
+	color: var(--color-ink) !important;
+	border: 1px solid transparent !important;
+}
+.cta .btn-light:hover {
+	background: #fff !important;
+	color: var(--color-brand-deep) !important;
+	border-color: transparent !important;
+	transform: translateY(-1px);
+}
+.cta .btn-light:focus-visible {
+	outline: 2px solid #fff;
+	outline-offset: 3px;
+}
+
+/* ---- FORMULÁRIO ---- */
 .form-floating {
 	position: relative;
-	border-bottom: 1px solid var(--border-subtle);
+	border-bottom: 1px solid var(--border-strong);
 	transition: border-bottom-color var(--dur-fast) var(--ease-standard);
 }
 .form-floating:focus-within { border-bottom-color: var(--accent); }
@@ -630,31 +890,21 @@ header .badge.bg-gradient-primary-to-secondary {
 .form-floating > .form-control:focus ~ label,
 .form-floating > .form-control:not(:placeholder-shown) ~ label {
 	transform: translateY(-1rem) scale(0.85);
-	color: var(--accent) !important;
+	color: var(--accent-text) !important;
 	background: transparent !important;
 	padding: 0 !important;
 }
 
-.form-floating textarea.form-control {
-	min-height: 8rem;
-}
+.form-floating textarea.form-control { min-height: 8rem; }
 
-.contato-title { color: var(--text-primary); }
-.contato-title .feature {
-	background: var(--gradient-brand) !important;
-	background-image: var(--gradient-brand) !important;
-	color: #fff !important;
-	border-radius: var(--radius-md);
-	width: 2rem;
-	height: 2rem;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
+.alert.alert-success,
+.alert.alert-warning {
+	background: var(--bg-elevated) !important;
+	color: var(--text-primary) !important;
+	border: 1px solid var(--border-strong);
+	border-radius: var(--radius-surface) !important;
 }
-
-/* Flash alerts em paleta do sistema */
-.alert.alert-success { background: var(--bg-elevated) !important; color: var(--accent) !important; border: 1px solid var(--accent); }
-.alert.alert-warning { background: var(--bg-elevated) !important; color: var(--accent-hover) !important; border: 1px solid var(--accent-hover); }
+.alert.alert-success { border-color: var(--accent); }
 
 /* ---- FOOTER ---- */
 footer.bg-dark {
@@ -662,17 +912,29 @@ footer.bg-dark {
 	border-top: 1px solid var(--border-subtle);
 	padding: var(--space-xl) 0 !important;
 }
-footer .text-gradient {
-	background: none !important;
-	-webkit-text-fill-color: currentColor !important;
-	color: var(--text-primary) !important;
-	transition: color var(--dur-fast) var(--ease-standard);
-}
-footer a:hover .text-gradient,
-footer .text-gradient:hover { color: var(--accent) !important; }
+footer .small { color: var(--text-muted); }
 footer a { color: var(--text-primary); }
 
-/* ---- WHATSAPP FLOAT ---- */
+.footer-social {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	border-radius: var(--radius-control);
+	color: var(--text-primary);
+	transition: color var(--dur-fast) var(--ease-standard), background-color var(--dur-fast) var(--ease-standard);
+}
+.footer-social:hover {
+	color: var(--accent-text);
+	background: var(--bg-elevated);
+}
+.footer-social:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+}
+
+/* ---- WHATSAPP FLUTUANTE ---- */
 #whatsapp-flutuante {
 	position: fixed;
 	bottom: var(--space-lg);
@@ -689,12 +951,16 @@ footer a { color: var(--text-primary); }
 	align-items: center;
 	justify-content: center;
 	color: #fff;
-	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
-	transition: filter var(--dur-fast) var(--ease-standard), transform var(--dur-base) var(--ease-out-quart);
+	box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.6);
+	transition: box-shadow var(--dur-base) var(--ease-out-quart), transform var(--dur-base) var(--ease-out-quart);
 }
 #whatsapp-flutuante a:hover {
-	filter: brightness(1.1);
 	transform: translateY(-2px);
+	box-shadow: 0 12px 30px -6px rgba(0, 0, 0, 0.7);
+}
+#whatsapp-flutuante a:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 3px;
 }
 #whatsapp-flutuante a svg {
 	width: 24px;
@@ -702,29 +968,25 @@ footer a { color: var(--text-primary); }
 	fill: #fff !important;
 }
 
-/* ---- 404 PAGE ---- */
+/* ---- 404 ---- */
 #page-not-found {
 	min-height: calc(100vh - 200px);
 	display: flex;
 	align-items: center;
-	padding: var(--space-section) 0;
+	padding: clamp(56px, 8vw, 96px) 0;
 }
 .titulo-not-found {
 	font-family: var(--font-display);
 	font-weight: 800;
 	font-size: clamp(5rem, 16vw, 10rem);
 	line-height: 0.9;
-	background: var(--gradient-brand);
-	-webkit-background-clip: text;
-	background-clip: text;
-	-webkit-text-fill-color: transparent;
-	color: transparent;
+	color: var(--accent-text);
 	margin: 0 0 var(--space-md);
 	letter-spacing: -0.04em;
 }
 .subtitulo {
 	font-family: var(--font-display);
-	font-weight: 600;
+	font-weight: 700;
 	font-size: var(--fs-headline);
 	color: var(--text-primary);
 	margin-bottom: var(--space-md);
@@ -734,25 +996,16 @@ footer a { color: var(--text-primary); }
 	background: var(--gradient-brand) !important;
 	background-image: var(--gradient-brand) !important;
 	color: #fff !important;
-	border-radius: var(--radius-md) !important;
+	border-radius: var(--radius-control) !important;
 	border: none !important;
 }
-.page-not-found-btn-voltar:hover { filter: brightness(1.1); color: #fff !important; }
+.page-not-found-btn-voltar:hover { color: #fff !important; transform: translateY(-1px); }
 
-/* ---- SECTIONS ---- */
-section[id], div[id] { scroll-margin-top: 100px; }
-
-.titulo-sobre {
-	font-family: var(--font-display);
-	font-weight: 500;
-	color: var(--text-primary);
-}
-
-/* ---- UTILITIES ---- */
+/* ---- UTILITÁRIOS ---- */
+section[id], div[id] { scroll-margin-top: 96px; }
 .border, .border-light, .border-dark { border-color: var(--border-subtle) !important; }
-.shadow { box-shadow: none !important; }
 
-/* ---- REDUCED MOTION ---- */
+/* ---- MOVIMENTO REDUZIDO ---- */
 @media (prefers-reduced-motion: reduce) {
 	html { scroll-behavior: auto; }
 	*, *::before, *::after {
@@ -760,6 +1013,8 @@ section[id], div[id] { scroll-margin-top: 100px; }
 		animation-iteration-count: 1 !important;
 		transition-duration: 0.01ms !important;
 	}
-	.galeria-projetos .lightgallery-item img,
-	.ds-plate__img { transform: none !important; }
+	.ds-plate:hover,
+	.btn:hover,
+	#whatsapp-flutuante a:hover { transform: none !important; }
+	.ds-plate:hover .ds-plate__img { transform: none !important; }
 }

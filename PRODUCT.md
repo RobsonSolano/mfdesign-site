@@ -6,28 +6,33 @@ brand
 
 ## Users
 
-Mayara Ferreira atende três frentes que se sobrepõem:
+O posicionamento mudou em agosto de 2026: o site deixou de vender serviços de freelancer e passou a apresentar Mayara como designer gráfica em busca de crescimento profissional. As três frentes de leitor, em ordem de prioridade:
 
-1. **Pessoas físicas em momentos marcantes** — convites de casamento, aniversário, chá de bebê, chá revelação. Compra emocional, decisão rápida via WhatsApp.
-2. **Pequenos empreendedores** — donos de loja/serviço que precisam de logo + identidade visual + mídia social mensal. Compra por confiança no portfólio.
-3. **Empresas maiores / agências** — projetos pontuais. Decisão mais formal, valorizam apresentação profissional.
+1. **Recrutadores e líderes de equipe (design, marketing, agência)** — precisam responder em segundos: quem é, o que sabe fazer, e ela consegue provar. Valorizam repertório, variedade de projetos e organização.
+2. **Pequenos empreendedores** — donos de loja/serviço que precisam de logo, identidade visual e mídia social. Compra por confiança no portfólio.
+3. **Pessoas físicas em momentos marcantes** — convites e personalizados. Compra emocional, decisão rápida via WhatsApp. Continua atendida, mas não é mais o eixo do site.
 
-Tráfego predominantemente mobile (origem: Instagram, WhatsApp). O visitante chega em modo "avaliação" — quer ver o trabalho antes de qualquer contato.
+Tráfego predominantemente mobile (origem: Instagram, WhatsApp, LinkedIn). O visitante chega em modo "avaliação", quer ver o trabalho antes de qualquer contato.
 
 ## Product Purpose
 
-Vitrine que estabelece a credibilidade da Mayara como designer pro mix de clientes acima. Sucesso = visitante consome o portfólio inteiro e, quando decide contratar, escolhe Mayara em vez de qualquer outro freelancer.
+Portfólio que estabelece Mayara como designer gráfica com experiência prática, repertório visual e capacidade de conduzir projetos diferentes. Sucesso = o visitante percorre os projetos e sai com a percepção de uma profissional real, organizada e preparada para evoluir dentro de uma equipe.
+
+Hierarquia de importância que o site precisa refletir: projetos e apresentação primeiro, feedbacks depois, sobre/habilidades em seguida, ferramentas e educação por último.
 
 ## Brand Personality
 
-Modernista com propósito + sofisticação restrita. Bold em hierarquia tipográfica e em decisões de layout; clean e profissional na execução. Acento dourado em fundo escuro como signature visual — sem cair em neon de SaaS nem em gradiente roxo→rosa de template genérico.
+Modernista com propósito + sofisticação restrita. Bold em hierarquia tipográfica e em decisões de layout; clean e profissional na execução.
+
+A signature visual é o degradê azul→rosa sobre fundo escuro, decisão da dona do projeto: a identidade não muda, ela se concentra. O degradê vive em superfícies que emolduram (moldura da foto, botão primário, fio de seção, painel de contato) e nunca dentro do conteúdo. Ver DESIGN.md.
 
 Três palavras: **confiante, deliberada, sofisticada**.
 
 ## Anti-references
 
-- O próprio site atual (template Bootstrap genérico: gradiente roxo→rosa, cards idênticos, hierarquia plana, ar de "startup pessoal").
-- SaaS dark com gradientes neon roxo/azul (estética "AI tool").
+- Template Bootstrap genérico: cards idênticos repetidos, hierarquia plana, degradê espalhado por tudo (inclusive em texto), ar de "startup pessoal".
+- SaaS dark com gradientes neon (estética "AI tool").
+- Linguagem de página comercial de serviços ("contrato mensal", "imagens a parte", "encontre a melhor solução para seu projeto").
 - Qualquer estética que pareça MENOS profissional que o trabalho que ela faz.
 
 ## Design Principles
@@ -41,5 +46,5 @@ Três palavras: **confiante, deliberada, sofisticada**.
 ## Accessibility & Inclusion
 
 - WCAG AA padrão (contraste ≥4.5:1 em texto, foco visível em interativos, alt text descritivo, hierarquia semântica de headings).
-- Respeitar `prefers-reduced-motion`: carrossel de depoimentos pausa, qualquer animação não-essencial é desabilitada.
+- Respeitar `prefers-reduced-motion`: hover de peça, elevação de botão e scroll suave são desabilitados.
 - Mobile-first crítico: layout perfeito no celular antes do desktop.

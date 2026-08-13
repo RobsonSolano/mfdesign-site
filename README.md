@@ -94,5 +94,5 @@ A Vercel detecta automaticamente `vercel.json` e aplica `cleanUrls: true`, fazen
 ## Pendente de revisão da Mayara
 
 - Os textos de **objetivo, desenvolvimento e resultado** de cada case em `galeria.html` foram escritos a partir do que é visível nas peças, não de briefing real. Precisam da revisão dela.
-- Faltam projetos de **social media** e **web design** para cumprir a variedade pedida no relatório de melhorias. As duas habilidades estão listadas em `index.html` sem projeto que as comprove.
+- Falta projeto de **social media** para cumprir a variedade pedida no relatório de melhorias. A habilidade está listada em `index.html` sem projeto que a comprove. (Web design foi retirado do site justamente por isso.)
 - **Instagram profissional:** hoje o rodapé aponta para `@mah.rferreira` (perfil pessoal). Se houver um perfil profissional, trocar.

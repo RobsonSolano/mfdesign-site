@@ -380,9 +380,17 @@ a { text-underline-offset: 3px; }
 	color: rgba(255, 255, 255, 0.6);
 	font-weight: 400;
 }
-/* No celular a badge quebra em duas linhas: sem separador não sobra ponto solto no fim da linha */
+/* No celular os separadores saem (senão sobra ponto solto no fim da linha) e o
+   espaçamento aperta, pra as três áreas caberem numa linha só a partir de 360px */
 @media (max-width: 575.98px) {
-	.hero-badge { gap: 4px 14px; }
+	.hero-badge {
+		gap: 3px 10px;
+		padding: 6px 11px;
+		letter-spacing: 0.07em;
+		/* se ainda quebrar (tela de 320px, fonte do sistema aumentada), as
+		   linhas ficam centradas em vez de deixar uma palavra solta à esquerda */
+		justify-content: center;
+	}
 	.hero-badge span:not(:last-child)::after { content: none; }
 }
 

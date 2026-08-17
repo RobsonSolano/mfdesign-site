@@ -85,7 +85,7 @@ components:
     background: "{colors.ink-elevated}"
     border: "1px solid {colors.ink-line}"
     rounded: "{rounded.surface}"
-    imageAspect: "3 / 2"
+    imageAspect: "1 / 1"
   definition-list:
     background: "transparent"
     separator: "1px solid {colors.ink-line}"
@@ -191,7 +191,7 @@ Exceções, ambas intencionais:
 
 ### Gallery Plate
 
-A peça central. Imagem em janela de proporção fixa **3:2** (`object-fit: cover`), o que alinha a grade mesmo com originais de formatos diferentes, e metadata abaixo: categoria em Label rosa, nome em Title, contexto em body muted. Na página de galeria o mesmo componente recebe um mini case com Objetivo, Desenvolvimento e Resultado.
+A peça central. Imagem em janela quadrada **1:1** (`object-fit: cover`), porque as peças são apresentações de marca em 1:1 onde cada faixa da composição conta, do logotipo no topo à paleta no rodapé; recortar em 3:2 comeria justamente as pontas. A janela fixa alinha a grade mesmo se entrar uma peça de outro formato. Metadata abaixo: categoria em Label rosa, nome em Title, contexto em body muted. Na página de galeria o mesmo componente recebe um mini case com Objetivo, Desenvolvimento e Resultado.
 
 Clique abre lightbox (lightgallery.js). O botão de download é escondido no CSS: o trabalho é para ver, não para baixar.
 
@@ -249,7 +249,7 @@ Raio interno é concêntrico: a foto do hero tem 12px dentro de uma moldura de 2
 - **Do** dar à grade de projetos mais espaço vertical que a qualquer outra seção (`.secao--destaque`).
 - **Do** usar `.secao--compacta` em ferramentas e educação: são as seções de menor prioridade.
 - **Do** declarar `width`/`height` e `loading="lazy"` em toda imagem, para não haver salto de layout.
-- **Do** servir as derivadas `-grade.webp` (1200x800) na grade e `-full.webp` no lightbox.
+- **Do** servir as derivadas `-grade.webp` (1200x1200) na grade e `-full.webp` no lightbox.
 
 ### Don't
 

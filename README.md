@@ -21,7 +21,7 @@ Site estático em HTML/CSS/JS puro, pronto para deploy na Vercel. Originalmente 
     ├── css/                # styles.css (Bootstrap custom) + mfdesign.css (design system)
     ├── js/                 # scripts.js (tema, lightbox, máscara, AJAX form)
     ├── img/                # imagens estáticas
-    │   ├── projetos/       # 6 projetos: original + derivadas -grade.webp e -full.webp
+    │   ├── projetos/       # 4 projetos: original + derivadas -grade.webp e -full.webp
     │   ├── depoimentos/    # prints de clientes: original + derivadas -crop.webp
     │   ├── og-capa.jpg     # preview social 1200x630
     │   └── profile-hero.webp
@@ -32,7 +32,7 @@ Site estático em HTML/CSS/JS puro, pronto para deploy na Vercel. Originalmente 
 
 Os arquivos originais em `assets/img/projetos/` têm de 1 a 4 MB cada e **não são servidos ao visitante**: funcionam como arquivo-fonte. As páginas apontam para as derivadas:
 
-- `projeto-N-grade.webp` (1200x800, recorte 3:2) na grade;
+- `projeto-N-grade.webp` (1200x1200) na grade;
 - `projeto-N-full.webp` (até 2000px) no lightbox;
 - `depoimentoN-crop.webp` (560px, área vazia do print recortada) no mural de feedbacks.
 

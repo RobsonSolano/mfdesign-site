@@ -11,18 +11,34 @@ Site estático em HTML/CSS/JS puro, pronto para deploy na Vercel. Originalmente 
 
 ```
 .
-├── index.html              # Home: hero, galeria resumida, sobre, CTA, depoimentos, skills, educação
-├── galeria.html            # Projetos em layout expandido + formulário de contato
+├── index.html              # Apresentação, projetos, feedbacks, sobre, habilidades, ferramentas, educação, contato
+├── galeria.html            # Projetos com mini case (objetivo/desenvolvimento/resultado) + formulário
 ├── 404.html                # Página de erro
+├── DESIGN.md               # Design system implementado (tokens espelham mfdesign.css)
+├── PRODUCT.md              # Posicionamento, público e princípios
 ├── vercel.json             # Configuração do Vercel (cleanUrls)
 └── assets/
-    ├── css/                # styles.css (Bootstrap custom) + lightslider.css
-    ├── js/                 # scripts.js (tema, validações, AJAX form) + lightslider.js
+    ├── css/                # styles.css (Bootstrap custom) + mfdesign.css (design system)
+    ├── js/                 # scripts.js (tema, lightbox, máscara, AJAX form)
     ├── img/                # imagens estáticas
-    │   ├── projetos/       # 6 imagens da galeria
-    │   └── depoimentos/    # 7 imagens do carrossel
+    │   ├── projetos/       # 6 projetos: original + derivadas -grade.webp e -full.webp
+    │   ├── depoimentos/    # prints de clientes: original + derivadas -crop.webp
+    │   ├── og-capa.jpg     # preview social 1200x630
+    │   └── profile-hero.webp
     └── mayararibeiroferreira.pdf
 ```
+
+## Imagens
+
+Os arquivos originais em `assets/img/projetos/` têm de 1 a 4 MB cada e **não são servidos ao visitante**: funcionam como arquivo-fonte. As páginas apontam para as derivadas:
+
+- `projeto-N-grade.webp` (1200x800, recorte 3:2) na grade;
+- `projeto-N-full.webp` (até 2000px) no lightbox;
+- `depoimentoN-crop.webp` (560px, área vazia do print recortada) no mural de feedbacks.
+
+Ao trocar uma peça, gere as derivadas antes de referenciá-la. Sem isso o portfólio volta a carregar ~17 MB de imagem no primeiro acesso.
+
+`assets/css/lightslider.css`, `assets/js/lightslider.js` e `assets/img/controls.png` ficaram sem referência quando o carrossel de depoimentos saiu; podem ser removidos.
 
 ## Rodando localmente
 
@@ -72,6 +88,11 @@ A Vercel detecta automaticamente `vercel.json` e aplica `cleanUrls: true`, fazen
 ## Notas da migração
 
 - **Tema (dark/light):** antes via `$_SESSION` do PHP; agora via `localStorage` (chave `theme`). Padrão `dark`.
-- **Templating:** os antigos `view_header`, `view_navigation`, `view_inicio`, `view_footer` foram consolidados em cada HTML. Há duplicação entre `index.html` e `galeria.html` — ao editar nav/footer, alterar em ambos.
+- **Templating:** os antigos `view_header`, `view_navigation`, `view_inicio`, `view_footer` foram consolidados em cada HTML. Há duplicação entre `index.html` e `galeria.html`: ao editar nav/footer, alterar em ambos.
 - **Formulário:** antes via `PHPMailer` no backend; agora via Web3Forms (client-side AJAX).
-- **Galeria expandida:** títulos/descrições dos 6 projetos em `galeria.html` são genéricos — substituir pelos dados reais de cada peça.
+
+## Pendente de revisão da Mayara
+
+- Os textos de **objetivo, desenvolvimento e resultado** de cada case em `galeria.html` foram escritos a partir do que é visível nas peças, não de briefing real. Precisam da revisão dela.
+- Faltam projetos de **social media** e **web design** para cumprir a variedade pedida no relatório de melhorias. As duas habilidades estão listadas em `index.html` sem projeto que as comprove.
+- **Instagram profissional:** hoje o rodapé aponta para `@mah.rferreira` (perfil pessoal). Se houver um perfil profissional, trocar.
